@@ -1,0 +1,27 @@
+{
+  "name": "gulp-2022",
+  "version": "1.0.0",
+  "description": "Сборка Gulp-2022 от Жени Андриканича, автор канала 'Фрилансер по жизни'.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StarkElessar/gulp-2022.git"
+  },
+  "keywords": [
+    "gulp",
+    "webpack",
+    "js",
+    "css",
+    "scss",
+    "html"
+  ],
+  "author": "FLS",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StarkElessar/gulp-2022/issues"
+  },
+  "homepage": "https://github.com/StarkElessar/gulp-2022#readme"
+}

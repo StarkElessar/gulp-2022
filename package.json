@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/StarkElessar/gulp-2022/issues"
   },
-  "homepage": "https://github.com/StarkElessar/gulp-2022#readme"
+  "homepage": "https://github.com/StarkElessar/gulp-2022#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }

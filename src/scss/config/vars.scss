@@ -1,0 +1,30 @@
+$mainOffset: 15px;
+$mainFont: 'Inter', sans-serif;
+
+$headerHeight: 90px;
+$footerHeight: 60px;
+
+$whiteColor: #fff;
+$blackColor: #131313;
+$grayColor: #6f6f6f;
+$redColor: #ff4040;
+
+$firstAccentColor: $blackColor;
+$secondAccentColor: $redColor;
+
+$fontColor: $blackColor;
+
+$btnBoxShadow:  0px 4px 4px rgba(0, 0, 0, 25%), 
+                0px 2px 3px rgba(13, 96, 111, 16%);
+
+$lightBoxShadow:  0 0 2px 0 rgba(#000, 10%), 
+                  0 0 4px 0 rgba(#000, 10%), 
+                  0 0 8px 0 rgba(#000, 10%);
+
+$hoverBoxShadow:  0 0 5px 0 rgba(#000, 15%), 
+                  0 0 10px 0 rgba(#000, 15%), 
+                  0 0 15px 0 rgba(#000, 15%);
+
+$standartTrans: all 280ms ease 0ms;
+
+$mainRadius: 10px;

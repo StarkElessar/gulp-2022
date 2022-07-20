@@ -1,24 +1,7 @@
-@import 'fonts';
+@import 'config/fonts';
+@import 'config/mixins';
+@import 'config/vars';
+@import 'config/reset';
+@import 'config/global';
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #dabfbf;
-  background: url('@img/i-am.jpg');
-  h1 {
-    font-family: Pushster;
-    font-weight: 400;
-    color: green;
-    font-size: 60px;
-  }
-}
-
-.img {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
-}
+@import 'layout/header';

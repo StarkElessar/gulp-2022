@@ -49,6 +49,7 @@
     "gulp-replace": "^1.1.3",
     "gulp-sass": "^5.0.0",
     "gulp-svg-sprite": "^1.5.0",
+    "gulp-ttf2woff": "^1.1.1",
     "gulp-ttf2woff2": "^4.0.1",
     "gulp-util": "^3.0.8",
     "gulp-version-number": "^0.2.4",
@@ -62,5 +63,7 @@
     "webp-converter": "^2.2.3",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
   }
 }

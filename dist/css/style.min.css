@@ -1,14 +1,14 @@
 @font-face {
   font-family: Inter;
   font-display: swap;
-  src: url("./../fonts/Inter-Bold.woff2") format("woff2"), url("./../fonts/Inter-Bold.woff") format("woff");
+  src: url("../fonts/Inter-Bold.woff2") format("woff2"), url("../fonts/Inter-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: Inter;
   font-display: swap;
-  src: url("./../fonts/Inter-Regular.woff2") format("woff2"), url("./../fonts/Inter-Regular.woff") format("woff");
+  src: url("../fonts/Inter-Regular.woff2") format("woff2"), url("../fonts/Inter-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -38,7 +38,6 @@ nav, footer, header, aside {
 html, body {
   height: 100%;
   width: 100%;
-  font-size: 100%;
   line-height: 1;
   font-size: 14px;
   font-family: "Inter", sans-serif;

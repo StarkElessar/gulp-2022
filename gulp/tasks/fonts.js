@@ -30,7 +30,10 @@ export const ttfToWoff = () => {
       })
     ))
     // Конвертируем в .woff
-    .pipe(ttf2woff())
+    // .pipe(ttf2woff())
+    .pipe(fonter({
+      formats: ['woff']
+    }))
     // выгружаем в папку с результатом
     .pipe(app.gulp.dest(`${app.path.build.fonts}`))
     // ищем файлы шрифтов .ttf
@@ -70,7 +73,7 @@ export const fontStyle = () => {
             } else if (fontWeight.toLowerCase() === 'semibold') {
               fontWeight = 600
             } else if (fontWeight.toLowerCase() === 'bold') {
-              fontWeight= 700
+              fontWeight = 700
             } else if (fontWeight.toLowerCase() === 'extrabold' || fontWeight.toLowerCase() === 'heavy') {
               fontWeight = 800
             } else if (fontWeight.toLowerCase() === 'black') {
@@ -98,5 +101,5 @@ export const fontStyle = () => {
   })
 
   return app.gulp.src(`${app.path.srcFolder}`)
-  function cb() {}
+  function cb() { }
 }

@@ -23,7 +23,7 @@ $maxWidthContainer: 1200;
 }
 
 // !adaptive font-size
-@mixin adaptivFont($pcSize, $mobSize) {
+@mixin adaptiveFont($pcSize, $mobSize) {
   $addSize: $pcSize - $mobSize;
   $maxWidthContainer: $maxWidthContainer - 320;
   font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer}));

@@ -3,6 +3,7 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
+  color: $blackColor;
 }
 
 *:before, *:after {
@@ -27,6 +28,7 @@ html,body {
 	line-height: 1;
 	font-size: 14px;
   font-family: $mainFont;
+  font-weight: 400;
 }
 
 input,button,textarea {

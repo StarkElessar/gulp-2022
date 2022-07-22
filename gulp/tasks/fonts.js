@@ -42,6 +42,10 @@ export const ttfToWoff = () => {
     .pipe(ttf2woff2())
     // выгружаем в папку с результатом
     .pipe(app.gulp.dest(`${app.path.build.fonts}`))
+    // Ищем файлы шрифтов .woff и woff2
+		.pipe(app.gulp.src(`${app.path.srcFolder}/fonts/*.{woff,woff2}`))
+		// Выгружаем в папку с результатом
+		.pipe(app.gulp.dest(`${app.path.build.fonts}`))
 }
 
 export const fontStyle = () => {

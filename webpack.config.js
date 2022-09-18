@@ -12,6 +12,10 @@ export const webpackConfig = (isMode) => {
   return {
     entry: ['@babel/polyfill', `${path.src}/js/app.js`],
     mode: isMode ? 'development' : 'production',
+    cache: {  
+      type: 'filesystem', // По умолчанию 'memory'
+      cacheDirectory: `${path.src}/.temporary_cache`
+    }, 
     output: {
       path: `${path.build}/js`,
       filename: 'app.min.js',
@@ -27,6 +31,9 @@ export const webpackConfig = (isMode) => {
             options: {
               presets: ['@babel/preset-env'],
             },
+          },
+          resolve: {
+            fullySpecified: false,
           },
         },
       ],

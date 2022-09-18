@@ -8,8 +8,10 @@
     "dev": "gulp",
     "build": "gulp build --build",
     "zip": "gulp deployZIP --build",
-    "deploy": "gulp deployFTP --build",
-    "svgSprive": "gulp svgSprive"
+    "deployFTP": "gulp deployFTP --build",
+    "svgSprive": "gulp svgSprive",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
     "browser-sync": "^2.27.7",
     "del": "^6.0.0",
     "fs": "^0.0.1-security",
+    "gh-pages": "^4.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
@@ -63,5 +66,5 @@
     "webp-converter": "^2.2.3",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
-  },
+  }
 }

@@ -1,6 +1,5 @@
 import fs from 'fs'
 import fonter from 'gulp-fonter'
-import ttf2woff from 'gulp-ttf2woff'
 import ttf2woff2 from 'gulp-ttf2woff2'
 
 export const otfToTtf = () => {
@@ -13,9 +12,7 @@ export const otfToTtf = () => {
       })
     ))
     // Конвертируем в .ttf
-    .pipe(fonter({
-      formats: ['ttf']
-    }))
+    .pipe(fonter({ formats: ['ttf'] }))
     // Выгружаем в исходную папку
     .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`))
 }
@@ -29,11 +26,8 @@ export const ttfToWoff = () => {
         message: 'Error: <%= error.message %>'
       })
     ))
-    // Конвертируем в .woff
-    // .pipe(ttf2woff())
-    .pipe(fonter({
-      formats: ['woff']
-    }))
+    // конвертируем в .woff
+    .pipe(fonter({ formats: ['woff'] }))
     // выгружаем в папку с результатом
     .pipe(app.gulp.dest(`${app.path.build.fonts}`))
     // ищем файлы шрифтов .ttf
@@ -87,7 +81,8 @@ export const fontStyle = () => {
             }
 
             fs.appendFile(fontsFile,
-              `@font-face {
+              `
+              @font-face {
                 font-family: ${fontName};
                 font-display: swap;
                 src: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");

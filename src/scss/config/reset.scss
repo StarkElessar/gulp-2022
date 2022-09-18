@@ -23,12 +23,12 @@ nav,footer,header,aside {
 }
 
 html,body {
-  height: 100%;
 	width: 100%;
-	line-height: 1;
+  height: 100%;
 	font-size: 14px;
   font-family: $mainFont;
   font-weight: 400;
+	line-height: 1;
 }
 
 input,button,textarea {

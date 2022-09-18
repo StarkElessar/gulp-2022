@@ -13,22 +13,3 @@ export function isWebp() {
     document.documentElement.classList.add(className)
   })
 }
-
-export function windowPopup() {
-  const burgerBtn = document.querySelector('.header__burger-btn')
-  const popupMenu = document.querySelector('.popup-menu')
-
-  burgerBtn.onclick = () => {
-    popupMenu.classList.add('popup-menu_show')
-  }
-
-  popupMenu.onclick = (event) => {
-    const target = event.target
-    const wrapper = target.classList.contains('popup-menu')
-    const closeBtn = target.closest('button')
-
-    if (wrapper || closeBtn) {
-      popupMenu.classList.remove('popup-menu_show')
-    }
-  }
-}

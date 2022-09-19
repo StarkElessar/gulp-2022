@@ -1,4 +1,7 @@
-/node_modules
-/src/.temporary_cache
-/dist
 .vscode
+
+dist
+node_modules
+package-lock.json
+
+src/.temporary_cache

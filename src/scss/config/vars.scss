@@ -1,5 +1,5 @@
 $mainOffset: 15px;
-$mainFont: 'Inter', sans-serif;
+$mainFont: 'Inter';
 
 $widthContainer: 1170px;
 $headerHeight: 100px;
@@ -13,7 +13,9 @@ $redColor: #ff4040;
 $firstAccentColor: $blackColor;
 $secondAccentColor: $redColor;
 
+$mainFontFamily: $mainFont, sans-serif;
 $fontColor: $blackColor;
+$fontSize: 14px;
 $mainRadius: 10px;
 
 $standartTrans: all 280ms ease-in-out 0ms;

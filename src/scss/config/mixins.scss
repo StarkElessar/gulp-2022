@@ -28,3 +28,76 @@ $maxWidthContainer: 1200;
   $maxWidthContainer: $maxWidthContainer - 320;
   font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer}));
 }
+
+// !gradient for text
+@mixin textGradient($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// !styled placeholder
+@mixin styledPlaceholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+// !media
+@mixin media($width) {
+  @media (max-width: #{$width + '.98' + px}) {
+    @content;
+  }
+}
+
+// !:not (last-child)
+@mixin notLast() {
+  &:not(:last-child) {
+    @content;
+  }
+}
+
+// !:not (first-child)
+@mixin notFirst() {
+  &:not(:first-child) {
+    @content;
+  }
+}
+
+// !обрезает текст до определенного кол-ва строк, остаток заменяет на 3 точки (...)
+@mixin lineClamp($value) {
+  display: -webkit-box;
+  -webkit-line-clamp: $value;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// !плавное убирание placeholder
+@mixin hidePlaceholder($time: 300, $effect: ease) {
+  &::-webkit-input-placeholder       {opacity: 1; transition: opacity #{$time} + ms $effect;}
+  &::-moz-placeholder                {opacity: 1; transition: opacity #{$time} + ms $effect;}
+  &:-moz-placeholder                 {opacity: 1; transition: opacity #{$time} + ms $effect;}
+  &:-ms-input-placeholder            {opacity: 1; transition: opacity #{$time} + ms $effect;}
+  &:focus::-webkit-input-placeholder {opacity: 0; transition: opacity #{$time} + ms $effect;}
+  &:focus::-moz-placeholder          {opacity: 0; transition: opacity #{$time} + ms $effect;}
+  &:focus:-moz-placeholder           {opacity: 0; transition: opacity #{$time} + ms $effect;}
+  &:focus:-ms-input-placeholder      {opacity: 0; transition: opacity #{$time} + ms $effect;}
+}
+
+// !after-before
+@mixin afterBefore($type, $pos: absolute) {
+  &::#{$type} {
+    content: '';
+    position: $pos;
+    @content
+  }
+}

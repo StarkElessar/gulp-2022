@@ -29,7 +29,7 @@ export const scss = () => {
     })))
     // Раскомментировать если нужен не сжатый дубль файла стилей
     .pipe(app.gulp.dest(app.path.build.css))
-    .pipe(app.plugins.if(app.isBuild, cleanCss()))
+    .pipe(app.plugins.if(app.isBuild, cleanCss({compatibility: 'ie8'})))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(app.plugins.browserSync.stream())

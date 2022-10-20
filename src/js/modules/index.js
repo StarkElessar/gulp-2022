@@ -1,3 +1,13 @@
+// FLS (Full Logging System) =================================================================================================================
+export function FLS(message) {
+  setTimeout(() => {
+    if (window.FLS) {
+      console.log(message)
+    }
+  }, 0)
+}
+
+// Проверка браузера на поддержку .webp изображений =================================================================================================================
 export function isWebp() {
   // Проверка поддержки webp
   function testWebp(callback) {
@@ -12,4 +22,18 @@ export function isWebp() {
     let className = support === true ? 'webp' : 'no-webp'
     document.documentElement.classList.add(className)
   })
+}
+
+// Функция для фиксированной шапки при скролле =================================================================================================================
+export function headerFixed() {
+  const header = document.querySelector('.header')
+  const firstScreen = document.querySelector('[data-observ]')
+
+  const headerStickyObserver = new IntersectionObserver(([entry]) => {
+    header.classList.toggle('sticky', !entry.isIntersecting)
+  })
+
+  if (firstScreen) {
+    headerStickyObserver.observe(firstScreen)
+  }
 }

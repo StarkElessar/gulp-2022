@@ -1,12 +1,12 @@
-$maxWidth: 1920;
-$minWidth: 320;
-$maxWidthContainer: 1200;
-$containerWidth: 1160;
+$maxWidth: 1920; // максимальная ширина страницы
+$minWidth: 320; // минимальная ширина телефона
+$maxWidthContainer: 1200; // ширина контейнера с учетом padding слева и справа
+$containerWidth: 1160; // ширина контейнера из макета
 
-$mainOffset: 15px;
-$mainFont: '';
+$mainOffset: rem(15); // отступы безопасности для контейнера
+$mainFont: ''; // указать здесь основное семейство шрифта
 
-$widthContainer: 1170px;
+$widthContainer: $containerWidth + 'px';
 $headerHeight: 100px;
 $footerHeight: 100px;
 
@@ -20,8 +20,8 @@ $secondAccentColor: $redColor;
 
 $mainFontFamily: $mainFont, sans-serif;
 $fontColor: $blackColor;
-$fontSize: 14px;
-$mainRadius: 10px;
+$fontSize: rem(16);
+$mainRadius: rem(10);
 
 $standartTrans: all 280ms ease-in-out 0ms;
 $btnBoxShadow:  0px 2px 3px rgba(#000, 10%), 

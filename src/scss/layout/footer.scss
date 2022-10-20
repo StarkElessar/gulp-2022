@@ -1,11 +1,11 @@
 .footer {
-  padding: 20px 0;
+  padding: rem(20) 0;
   background: $blackColor;
   // .footer__container
   &__container {
     display: flex;
     align-items: center;
-    @media (max-width: 510.98px) {
+    @include media(510) {
       flex-direction: column;
       align-items: flex-start;
     }

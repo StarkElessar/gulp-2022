@@ -3,12 +3,11 @@ $minWidth: 320; // минимальная ширина телефона
 $maxWidthContainer: 1200; // ширина контейнера с учетом padding слева и справа
 $containerWidth: 1160; // ширина контейнера из макета
 
-$mainOffset: rem(15); // отступы безопасности для контейнера
+$mainOffset: 15; // отступы безопасности для контейнера
 $mainFont: ''; // указать здесь основное семейство шрифта
 
-$widthContainer: $containerWidth + 'px';
-$headerHeight: 100px;
-$footerHeight: 100px;
+$headerHeight: 100;
+$footerHeight: 100;
 
 $whiteColor: #fff;
 $blackColor: #131313;

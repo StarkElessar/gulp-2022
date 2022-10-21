@@ -24,11 +24,11 @@ body {
   }
 
   &_start {
-    padding-top: $headerHeight;
+    padding-top: rem($headerHeight);
   }
 }
 [class*="__container"] {
-  max-width: $widthContainer + $mainOffset * 2;
+  max-width: rem($containerWidth + $mainOffset * 2);
   margin: 0 auto;
-  padding: 0 $mainOffset;
+  padding: 0 rem($mainOffset);
 }

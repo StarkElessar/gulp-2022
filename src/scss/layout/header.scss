@@ -1,9 +1,9 @@
 // =====================================================================================================================
 .header {
   width: 100%;
-  height: $headerHeight;
   // .header__container
   &__container {
+    height: rem($headerHeight);
     display: flex;
     align-items: center;
   }

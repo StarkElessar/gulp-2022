@@ -1,7 +1,7 @@
 {
   "name": "gulp-2022",
   "version": "1.0.0",
-  "description": "Сборка Gulp-2022 от Жени Андриканича, автор канала 'Фрилансер по жизни'.",
+  "description": "Сборка Gulp+Webpack+Babel. С уклоном под верстальщиков",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
@@ -25,7 +25,7 @@
     "scss",
     "html"
   ],
-  "author": "FLS",
+  "author": "Sergei Chevdar <serj.elessar@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/StarkElessar/gulp-2022/issues"

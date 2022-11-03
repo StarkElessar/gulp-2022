@@ -1,15 +1,12 @@
 {
-  "name": "gulp-2022",
+  "name": "gulp-webpack-babel-easy-build",
   "version": "1.0.0",
-  "description": "Сборка Gulp-2022 от Жени Андриканича, автор канала 'Фрилансер по жизни'.",
+  "description": "Облегченная версия сборки Gulp + WebPack + Babel без лишнего функционала для разворачивания быстрых тестовых проектов.",
   "main": "gulpfile.js",
   "type": "module",
   "scripts": {
     "dev": "gulp",
     "build": "gulp build --build",
-    "zip": "gulp deployZIP --build",
-    "deployFTP": "gulp deployFTP --build",
-    "svgSprive": "gulp svgSprive",
     "deploy": "gh-pages -d dist",
     "predeploy": "npm run build"
   },
@@ -25,7 +22,7 @@
     "scss",
     "html"
   ],
-  "author": "FLS",
+  "author": "Sergei Chevdar <serj.elessar@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/StarkElessar/gulp-2022/issues"

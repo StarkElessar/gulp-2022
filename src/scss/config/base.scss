@@ -3,6 +3,29 @@ body {
     overflow: hidden;
   }
 }
+[class*="__container"] {
+  max-width: rem($containerWidth + $mainOffset * 2);
+  margin: 0 auto;
+  padding: 0 rem($mainOffset);
+}
+// Стили отзывчивых картинок (IBG)
+[class*="-ibg"] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+[class*="-ibg_contain"] {
+	img {
+		object-fit: contain;
+	}
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -26,9 +49,4 @@ body {
   &_start {
     padding-top: rem($headerHeight);
   }
-}
-[class*="__container"] {
-  max-width: rem($containerWidth + $mainOffset * 2);
-  margin: 0 auto;
-  padding: 0 rem($mainOffset);
 }

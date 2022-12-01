@@ -15,8 +15,8 @@ export const scss = () => {
       title: 'SCSS',
       message: 'Error: <%= error.message %>'
     })))
-    .pipe(app.plugins.replace(/@img\//g, '../images/'))
     .pipe(sass({ outputStyle: 'expanded' }))
+    .pipe(app.plugins.replace(/@img\//g, '../images/'))
     .pipe(app.plugins.if(app.isBuild, groupCssMediaQueries()))
     .pipe(app.plugins.if(app.isBuild, webpcss({
       webpClass: '.webp',
@@ -28,8 +28,8 @@ export const scss = () => {
       cascade: true
     })))
     // Раскомментировать если нужен не сжатый дубль файла стилей
-    .pipe(app.gulp.dest(app.path.build.css))
-    .pipe(app.plugins.if(app.isBuild, cleanCss({compatibility: 'ie8'})))
+    // .pipe(app.gulp.dest(app.path.build.css))
+    .pipe(app.plugins.if(app.isBuild, cleanCss({ compatibility: 'ie8' })))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(app.gulp.dest(app.path.build.css))
     .pipe(app.plugins.browserSync.stream())

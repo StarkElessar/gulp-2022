@@ -34,5 +34,5 @@ export const path = {
   buildFolder: buildFolder,
   srcFolder: srcFolder,
   rootFolder: rootFolder,
-  ftp: `test`
+  ftp: `` // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
 }

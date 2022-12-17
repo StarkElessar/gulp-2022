@@ -29,10 +29,27 @@ function isWebp() {
   })
 }
 
+/* Проверка мобильного браузера */
+const isMobile = {
+  Android: () => navigator.userAgent.match(/Android/i),
+  BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
+  iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
+  Opera: () => navigator.userAgent.match(/Opera Mini/i),
+  Windows: () => navigator.userAgent.match(/IEMobile/i),
+  any: () =>
+    isMobile.Android() ||
+    isMobile.BlackBerry() ||
+    isMobile.iOS() ||
+    isMobile.Opera() ||
+    isMobile.Windows(),
 }
-    webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA'
+/* Добавление класса touch для HTML если браузер мобильный */
+function addTouchClass() {
+  // Добавление класса _touch для HTML если браузер мобильный
+  if (isMobile.any()) {
+    html.classList.add('touch')
   }
-  // Добавление класса _webp или _no-webp для HTML 
+}
 
 // Добавление loaded для HTML после полной загрузки страницы
 function addLoadedClass() {

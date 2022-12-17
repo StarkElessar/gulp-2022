@@ -20,12 +20,13 @@ $redColor: #ff4040;
 $firstAccentColor: $blackColor;
 $secondAccentColor: $redColor;
 
-$mainFontFamily: $mainFont, sans-serif;
-$fontColor: $blackColor;
-$fontSize: rem(16);
-$mainRadius: rem(10);
+$fontFamily: $mainFont, sans-serif; // Семейство шрифта по умолчанию
+$fontColor: $blackColor; // Цвет шрифта по умолчанию
+$fontSize: rem(16); // Размер шрифта по умолчанию
+$fontWeight: $mainWeight; // Жирность шрифта по умолчанию
 
 $standartTrans: all 280ms ease-in-out 0ms;
+
 $btnBoxShadow:  0px 2px 3px rgba(#000, 10%), 
                 0px 8px 3px rgba(#000, 10%);
 

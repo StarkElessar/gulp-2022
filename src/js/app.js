@@ -3,6 +3,9 @@ import { isWebp, headerFixed }from './modules'
 // import { MousePRLX } from './libs/parallaxMouse'
 
 /* Раскомментировать для использования */
+// import AOS from 'aos'
+
+/* Раскомментировать для использования */
 // import Swiper, { Navigation, Pagination } from 'swiper'
 
 // Включить/выключить FLS (Full Logging System) (в работе)

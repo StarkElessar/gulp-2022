@@ -1,4 +1,24 @@
-import { isWebp, headerFixed }from './modules'
+/*
+!(i) 
+Код попадает в итоговый файл,
+только когда вызвана функция,
+например flsFunctions.spollers();
+Или когда импортирован весь файл,
+например import "files/script.js";
+Неиспользуемый (не вызванный)
+код в итоговый файл не попадает.
+
+Если мы хотим добавить модуль
+следует его расскоментировать
+*/
+import {
+  isWebp,
+  headerFixed,
+  togglePopupWindows,
+  addTouchClass,
+  addLoadedClass,
+  menuInit
+} from './modules'
 /* Раскомментировать для использования */
 // import { MousePRLX } from './libs/parallaxMouse'
 

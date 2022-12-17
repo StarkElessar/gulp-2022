@@ -52,34 +52,11 @@
 	}
 }
 
-// !adaptive font-size
-@mixin adaptiveFont($pcSize, $mobSize) {
-  $addSize: $pcSize - $mobSize;
-  $maxWidthContainer: $maxWidthContainer - 320;
-  font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer}));
-}
-
 // !gradient for text
 @mixin textGradient($gradient) {
   background: $gradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-// !styled placeholder
-@mixin styledPlaceholder($color) {
-  &::-webkit-input-placeholder {
-    color: $color;
-  }
-  &::-moz-placeholder {
-    color: $color;
-  }
-  &:-moz-placeholder {
-    color: $color;
-  }
-  &:-ms-input-placeholder {
-    color: $color;
-  }
 }
 
 // !media

@@ -43,11 +43,21 @@ function addLoadedClass() {
   })
 }
 
+// Получение хеша в адресе сайта
+const getHash = () => {
+  if (location.hash) {
+    return location.hash.replace('#', '');
+  }
+}
+
+// Указание хеша в адресе сайта
+function setHash(hash) {
+	hash = hash ? `#${hash}` : window.location.href.split('#')[0];
+  history.pushState('', '', hash);
+}
+
 // Функция для фиксированной шапки при скролле =================================================================================================================
 function headerFixed() {
-  const header = document.querySelector('.header')
-  const firstScreen = document.querySelector('[data-observ]')
-
   const headerStickyObserver = new IntersectionObserver(([entry]) => {
     header.classList.toggle('sticky', !entry.isIntersecting)
   })

@@ -88,6 +88,30 @@
   overflow: hidden;
 }
 
+// !styled placeholder for TextArea
+@mixin styledPlaceholder($color, $fontSize: inherit, $lineHeight: normal) {
+  &:-moz-placeholder { 
+    color: $color; 
+    font-size: $fontSize;
+    line-height: $lineHeight;
+  }
+  &::-moz-placeholder { 
+    color: $color; 
+    font-size: $fontSize;
+    line-height: $lineHeight;
+  }
+  &::-webkit-input-placeholder { 
+    color: $color; 
+    font-size: $fontSize;
+    line-height: $lineHeight;
+  }
+  &:-ms-input-placeholder { 
+    color: $color; 
+    font-size: $fontSize;
+    line-height: $lineHeight;
+  }
+}
+
 // !плавное убирание placeholder
 @mixin hidePlaceholder($time: 300, $effect: ease) {
   &::-webkit-input-placeholder       {opacity: 1; transition: opacity #{$time} + ms $effect;}

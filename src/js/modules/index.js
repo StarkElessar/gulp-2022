@@ -40,6 +40,57 @@ function headerFixed() {
     headerStickyObserver.observe(firstScreen)
   }
 }
+
+// Универсальная функция для открытия и закрытия попапо =================================================================================================================
+const togglePopupWindows = () => {
+  document.addEventListener('click', ({ target }) => {
+    if (target.closest('[data-type]')) {
+      const popup = document.querySelector(
+        `[data-popup="${target.dataset.type}"]`
+      )
+
+      if (document.querySelector('._is-open')) {
+        document.querySelectorAll('._is-open').forEach((modal) => {
+          modal.classList.remove('_is-open')
+        })
+      }
+
+      popup.classList.add('_is-open')
+      toggleBodyLock(true)
+    }
+
+    if (
+      target.classList.contains('_overlay-bg') ||
+      target.closest('.button-close')
+    ) {
+      const popup = target.closest('._overlay-bg')
+
+      popup.classList.remove('_is-open')
+      toggleBodyLock(false)
+    }
+  })
+}
+
+// Модуль работы с меню (бургер) =======================================================================================================================================================================================================================
+const menuInit = () => {
+  if (burgerButton) {
+    document.addEventListener('click', ({ target }) => {
+      if (target.closest('.icon-menu')) {
+        html.classList.toggle('menu-open')
+        toggleBodyLock(html.classList.contains('menu-open'))
+      }
+    })
+  }
+}
+const menuOpen = () => {
+  toggleBodyLock(true)
+  html.classList.add('menu-open')
+}
+const menuClose = () => {
+  toggleBodyLock(false)
+  html.classList.remove('menu-open')
+}
+
 export {
   FLS,
   isWebp,

@@ -1,7 +1,7 @@
-import fileinclude from "gulp-file-include"
 import webpHtml from 'gulp-webp-html-nosvg'
 import versionNumber from 'gulp-version-number'
 import htmlMin from 'gulp-htmlmin'
+import pug from 'gulp-pug'
 
 export const html = () => {
   return app.gulp.src(app.path.src.html)
@@ -11,7 +11,12 @@ export const html = () => {
         message: 'Error: <%= error.message %>'
       })
     ))
-    .pipe(fileinclude())
+    .pipe(pug({
+      // Сжатие HTML файфайла
+      pretty: true,
+      // Показывать в терминале какой файл обработан
+      verbose: true
+    }))
     .pipe(app.plugins.replace(/@img\//g, 'images/'))
     .pipe(app.plugins.if(app.isBuild, webpHtml()))
     .pipe(htmlMin({

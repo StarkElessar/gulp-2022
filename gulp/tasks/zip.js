@@ -2,7 +2,7 @@ import del from 'del'
 import zipPlugin from 'gulp-zip'
 
 export const zip = () => {
-  del(`./${app.path.rootFolder}.zip`)
+  del(`./${app.path.root}.zip`)
 
   return app.gulp.src(`${app.path.buildFolder}/**/*.*`, {})
     .pipe(app.plugins.plumber(
@@ -11,6 +11,6 @@ export const zip = () => {
         message: 'Error: <%= error.message %>'
       })
     ))
-    .pipe(zipPlugin(`${app.path.rootFolder}.zip`))
+    .pipe(zipPlugin(`${app.path.root}.zip`))
     .pipe(app.gulp.dest('./'))
 }

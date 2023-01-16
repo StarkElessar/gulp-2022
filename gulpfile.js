@@ -26,7 +26,7 @@ global.app = {
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
-  gulp.watch(path.watch.files, copy)
+  gulp.watch(path.watch.static, copy)
   gulp.watch(path.watch.html, html)
   gulp.watch(path.watch.scss, scss)
   gulp.watch(path.watch.js, js)
@@ -36,7 +36,10 @@ function watcher() {
 // Последовательная обработка шрифтов
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle)
 // Основные задачи
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images))
+const mainTasks = gulp.series(
+  fonts,
+  gulp.parallel(copy, html, scss, js, images)
+)
 // Построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))
 const build = gulp.series(reset, mainTasks)
@@ -47,10 +50,4 @@ const deployFTP = gulp.series(reset, mainTasks, ftp)
 gulp.task('default', dev)
 
 // Экспорт сценариев
-export {
-  dev,
-  build,
-  deployZIP,
-  deployFTP,
-  svgSprive
-}
+export { dev, build, deployZIP, deployFTP, svgSprive }

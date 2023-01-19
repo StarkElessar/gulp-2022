@@ -1,6 +1,6 @@
 /*
 !(i) 
-Код попадает в итоговый файл, только когда вызвана функция, например flsFunctions.spollers();
+Код попадает в итоговый файл, только когда вызвана функция, например FLSFunctions.spollers();
 Или когда импортирован весь файл, например import "files/script.js";
 Неиспользуемый (не вызванный) код в итоговый файл не попадает.
 
@@ -12,7 +12,7 @@ import {
   togglePopupWindows,
   addTouchClass,
   addLoadedClass,
-  menuInit
+  menuInit,
 } from './modules'
 /* Раскомментировать для использования */
 // import { MousePRLX } from './libs/parallaxMouse'
@@ -24,7 +24,7 @@ import {
 // import Swiper, { Navigation, Pagination } from 'swiper'
 
 // Включить/выключить FLS (Full Logging System) (в работе)
-window['FLS'] = true;
+window['FLS'] = true
 
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML
 ! (i) необходимо для корректного отображения webp из css 
@@ -41,8 +41,8 @@ isWebp()
 // menuInit()
 
 /* Библиотека для анимаций ===============================================================================
-*  документация: https://michalsnik.github.io/aos 
-*/
+ *  документация: https://michalsnik.github.io/aos
+ */
 // AOS.init();
 // =======================================================================================================
 

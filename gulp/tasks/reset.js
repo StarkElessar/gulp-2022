@@ -1,5 +1,3 @@
 import del from 'del'
 
-export const reset = () => {
-  return del(app.path.clean)
-}
+export const reset = () => del(app.path.clean)

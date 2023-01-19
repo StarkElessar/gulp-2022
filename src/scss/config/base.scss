@@ -1,13 +1,72 @@
 body {
-  .lock {
+  &.lock {
     overflow: hidden;
+    touch-action: none;
   }
 }
+// Базовые анимации:
+// @import "keyframes";
+
+// Стили для полноэкранного блока:
+// @import "fullscreen";
+
+// Стили основного ограничивающего контейнера ========================================================================
+/*
+* (i) Стили будут применяться ко 
+* всем классам содержащим *__container
+* Например header__container, main__container и т.д.
+*/
+[class*="__container"] {
+  max-width: rem($containerWidth + $mainOffset * 2);
+  margin: 0 auto;
+  padding: 0 rem($mainOffset);
+}
+// Стили отзывчивых картинок (IBG) ===================================================================================
+[class*="-ibg"] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+[class*="-ibg_contain"] {
+	img {
+		object-fit: contain;
+	}
+}
+// Стили для обертки модальных окон ==================================================================================
+[class*="_overlay-bg"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: $standartTrans; // Можно задать свою анимацию
+  z-index: 2000; // Увеличить если нужно
+  padding: rem(60) rem(15); // Изменить по макету
+  overflow-y: auto;
+  @include media(768) {
+    &::-webkit-scrollbar { // Удалить из за ненадобности
+      display: none;
+    }
+  }
+  &._is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+// Оболочка ===========================================================================================================
 .wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-  overflow: hidden;
+  overflow: hidden; // clip - если используется в проекте position: sticky
 }
 .page {
   position: relative;
@@ -26,9 +85,4 @@ body {
   &_start {
     padding-top: rem($headerHeight);
   }
-}
-[class*="__container"] {
-  max-width: rem($containerWidth + $mainOffset * 2);
-  margin: 0 auto;
-  padding: 0 rem($mainOffset);
 }

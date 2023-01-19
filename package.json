@@ -64,10 +64,13 @@
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
     "sass": "^1.45.1",
-    "swiper": "^7.3.4",
     "vinyl-ftp": "^0.6.1",
     "webp-converter": "*2.2.3",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "swiper": "^8.4.5"
   }
 }

@@ -1,7 +1,7 @@
 // Получаем имя папки проекта
 import * as nodePath from 'path'
-const rootFolder = nodePath.basename(nodePath.resolve())
 
+const rootFolder = nodePath.basename(nodePath.resolve())
 const buildFolder = `./dist`
 const srcFolder = `./src`
 
@@ -12,7 +12,7 @@ export const path = {
     html: `${buildFolder}/`,
     images: `${buildFolder}/images/`,
     fonts: `${buildFolder}/fonts/`,
-    files: `${buildFolder}/files/`,
+    static: `${buildFolder}/static/`,
   },
   src: {
     js: `${srcFolder}/js/app.js`,
@@ -20,7 +20,7 @@ export const path = {
     svg: `${srcFolder}/images/**/*.svg`,
     scss: `${srcFolder}/scss/style.scss`,
     html: `${srcFolder}/*.html`,
-    files: `${srcFolder}/files/**/*.*`,
+    static: `${srcFolder}/static/**/*.*`,
     svgicons: `${srcFolder}/svgicons/*.svg`,
   },
   watch: {
@@ -28,11 +28,11 @@ export const path = {
     scss: `${srcFolder}/scss/**/*.scss`,
     html: `${srcFolder}/**/*.html`,
     images: `${srcFolder}/**/*.{jpg,jpeg,png,svg,gif,webp,ico}`,
-    files: `${srcFolder}/files/**/*.*`
+    static: `${srcFolder}/static/**/*.*`,
   },
   clean: buildFolder,
   buildFolder: buildFolder,
   srcFolder: srcFolder,
-  rootFolder: rootFolder,
-  ftp: `test`
+  root: rootFolder,
+  ftp: ``, // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
 }

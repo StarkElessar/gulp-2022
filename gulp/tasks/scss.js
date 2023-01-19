@@ -1,7 +1,6 @@
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import rename from 'gulp-rename'
-
 import cleanCss from 'gulp-clean-css' // Сжатие CSS файла
 import webpcss from 'gulp-webpcss' // Вывод WEBP изображений
 import autoPrefixer from 'gulp-autoprefixer' // Добавление вендорных префиксов

@@ -1,11 +1,15 @@
 import { body, lockPaddingElements, pageWrapper } from './elementsNodeList'
+import { FLS } from './../modules'
 /*
 * Универсальная функция для блокировки скрола при открытии модальных окон
 * При открытии модального окна вызываем: toggleBodyLock(true)
 * При закрытии окна вызываем: toggleBodyLock(false)
+
+* lockPaddingElements - это коллекция элементов с фиксированной позицией
+* В html таким элементам нужно дать атрибут [data-lp] 
 */
 const toggleBodyLock = (isLock) => {
-  console.log(isLock);
+  FLS(`Попап ${isLock ? 'открыт' : 'закрыт'}`)
   const lockPaddingValue = window.innerWidth - pageWrapper.offsetWidth
 
   setTimeout(() => {

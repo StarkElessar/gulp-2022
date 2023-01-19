@@ -1,13 +1,9 @@
 import toggleBodyLock from './../helpers/toggleBodyLock'
 import { html, firstScreen, header, burgerButton } from './../helpers/elementsNodeList'
 
-// FLS (Full Logging System) =================================================================================================================
+// logger (Full Logging System) =================================================================================================================
 function FLS(message) {
-  setTimeout(() => {
-    if (window.FLS) {
-      console.log(message)
-    }
-  }, 0)
+  setTimeout(() => (window.FLS ? console.log(message) : null), 0)
 }
 
 // Проверка браузера на поддержку .webp изображений =================================================================================================================
@@ -22,10 +18,10 @@ function isWebp() {
   }
   // Добавление класса _webp или _no-webp для HTML
   testWebp((support) => {
-    const className = support === true ? 'webp' : 'no-webp'
+    const className = support ? 'webp' : 'no-webp'
     html.classList.add(className)
 
-    FLS(support === true ? 'webp поддерживается' : 'webp не поддерживается')
+    FLS(support ? 'webp поддерживается' : 'webp не поддерживается')
   })
 }
 
@@ -63,14 +59,14 @@ function addLoadedClass() {
 // Получение хеша в адресе сайта
 const getHash = () => {
   if (location.hash) {
-    return location.hash.replace('#', '');
+    return location.hash.replace('#', '')
   }
 }
 
 // Указание хеша в адресе сайта
 function setHash(hash) {
-	hash = hash ? `#${hash}` : window.location.href.split('#')[0];
-  history.pushState('', '', hash);
+  hash = hash ? `#${hash}` : window.location.href.split('#')[0]
+  history.pushState('', '', hash)
 }
 
 // Функция для фиксированной шапки при скролле =================================================================================================================
@@ -146,5 +142,5 @@ export {
   setHash,
   menuInit,
   menuOpen,
-  menuClose
+  menuClose,
 }

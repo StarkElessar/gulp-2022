@@ -9,7 +9,8 @@ const path = {
 }
 
 export const webpackConfig = (isMode) => ({
-  entry: ['@babel/polyfill', `${path.src}/js/app.js`],
+  entry: ['@babel/polyfill', `${path.src}/js/app.ts`],
+  devtool: 'inline-source-map',
   mode: isMode ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
@@ -20,15 +21,18 @@ export const webpackConfig = (isMode) => ({
     filename: 'app.min.js',
     publicPath: '/',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
           },
         },
         resolve: {

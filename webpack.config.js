@@ -10,10 +10,10 @@ const path = {
   build: pathNode.resolve(builFolder),
 }
 
-export const webpackConfig = (isMode) => ({
+export const webpackConfig = (isDev) => ({
   entry: ['@babel/polyfill', `${path.src}/js/app.ts`],
   devtool: 'inline-source-map',
-  mode: isMode ? 'development' : 'production',
+  mode: isDev ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
     cacheDirectory: path.cache,

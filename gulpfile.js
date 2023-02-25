@@ -36,10 +36,7 @@ function watcher() {
 // Последовательная обработка шрифтов
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle)
 // Основные задачи
-const mainTasks = gulp.series(
-  fonts,
-  gulp.parallel(copy, html, scss, js, images)
-)
+const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images))
 // Построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server))
 const build = gulp.series(reset, mainTasks)

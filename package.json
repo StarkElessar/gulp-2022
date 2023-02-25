@@ -1,6 +1,6 @@
 {
   "name": "gulp-pug",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Сборка Gulp+Pug+Webpack+Babel",
   "main": "gulpfile.js",
   "type": "module",

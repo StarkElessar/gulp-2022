@@ -28,7 +28,7 @@ import {
 /* Раскомментировать для использования */
 // import Swiper, { Navigation, Pagination } from 'swiper'
 
-// Включить/выключить FLS (Full Logging System) (в работе)
+/** Включить/выключить FLS (Full Logging System) (в работе) */
 window['FLS'] = location.hostname === 'localhost'
 
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML

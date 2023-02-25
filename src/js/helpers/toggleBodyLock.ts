@@ -1,6 +1,6 @@
 import { body, lockPaddingElements, pageWrapper } from './elementsNodeList'
 import { FLS } from '../modules'
-/*
+/**
 * Универсальная функция для блокировки скрола при открытии модальных окон
 * При открытии модального окна вызываем: toggleBodyLock(true)
 * При закрытии окна вызываем: toggleBodyLock(false)

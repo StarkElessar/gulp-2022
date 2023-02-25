@@ -13,7 +13,7 @@ export const webpackConfig = (isMode) => ({
   mode: isMode ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
-    cacheDirectory: `${path.src}/.temporary_cache`,
+    cacheDirectory: `/.temporary_cache`,
   },
   output: {
     path: `${path.build}/js`,

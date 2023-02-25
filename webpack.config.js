@@ -1,17 +1,14 @@
 import * as pathNode from 'path'
-import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url)
 const srcFolder = 'src'
 const builFolder = 'dist'
+const tempCache = '.temporary_cache'
 
 const path = {
-  root: pathNode.dirname(__filename),
+  cache: pathNode.resolve(tempCache),
   src: pathNode.resolve(srcFolder),
   build: pathNode.resolve(builFolder),
 }
-
-console.log(path.root);
 
 export const webpackConfig = (isMode) => ({
   entry: ['@babel/polyfill', `${path.src}/js/app.ts`],
@@ -19,7 +16,7 @@ export const webpackConfig = (isMode) => ({
   mode: isMode ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
-    cacheDirectory: `${path.root}/.temporary_cache`,
+    cacheDirectory: path.cache,
   },
   output: {
     path: `${path.build}/js`,

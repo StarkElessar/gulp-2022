@@ -33,7 +33,7 @@ export const webpackConfig = (isDev) => ({
         exclude: /node_modules/,
         use: 'babel-loader',
         resolve: {
-          fullySpecified: true,
+          fullySpecified: false,
         },
       },
     ],

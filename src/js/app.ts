@@ -29,7 +29,7 @@ import {
 // import Swiper, { Navigation, Pagination } from 'swiper'
 
 // Включить/выключить FLS (Full Logging System) (в работе)
-window['FLS'] = true
+window['FLS'] = location.hostname === 'localhost'
 
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML
 ! (i) необходимо для корректного отображения webp из css 

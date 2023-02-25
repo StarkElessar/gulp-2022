@@ -7,7 +7,7 @@ function FLS(message: string): void {
   setTimeout(() => (window.FLS ? console.log(message) : null), 0)
 }
 
-// Проверка браузера на поддержку .webp изображений =================================================================================================================
+// Проверка браузера на поддержку .webp изображений ======================================================
 function isWebp() {
   // Проверка поддержки webp
   const testWebp = (callback: TypeCallback) => {
@@ -103,10 +103,7 @@ const togglePopupWindows = (): void => {
       toggleBodyLock(true)
     }
 
-    if (
-      target.classList.contains('_overlay-bg') ||
-      target.closest('.button-close')
-    ) {
+    if (target.classList.contains('_overlay-bg') || target.closest('.button-close')) {
       const popup = target.closest('._overlay-bg')
 
       popup?.classList.remove('_is-open')

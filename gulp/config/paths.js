@@ -1,8 +1,8 @@
-import path from 'path'
+import path from 'path';
 
-const projectDirName = path.basename(path.resolve())
-const buildFolder = `./dist`
-const srcFolder = `./src`
+const projectDirName = path.basename(path.resolve());
+const buildFolder = `./dist`;
+const srcFolder = `./src`;
 
 const filePaths = {
   build: {
@@ -32,8 +32,8 @@ const filePaths = {
   clean: buildFolder,
   buildFolder: buildFolder,
   srcFolder: srcFolder,
-	projectDirName,
+  projectDirName,
   ftp: ``, // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
-}
+};
 
-export { filePaths }
+export { filePaths };

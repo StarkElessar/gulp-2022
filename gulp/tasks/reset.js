@@ -1,5 +1,5 @@
-import del from 'del'
+import del from 'del';
 
-const reset = () => del(app.path.clean)
+const reset = () => del(app.path.clean);
 
-export { reset }
+export { reset };

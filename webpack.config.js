@@ -1,9 +1,9 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url)
-const srcFolder = 'src'
-const buildFolder = 'dist'
+const __filename = fileURLToPath(import.meta.url);
+const srcFolder = 'src';
+const buildFolder = 'dist';
 
 const paths = {
   root: path.dirname(__filename),
@@ -40,4 +40,4 @@ export const webpackConfig = (isMode) => ({
       },
     ],
   },
-})
+});

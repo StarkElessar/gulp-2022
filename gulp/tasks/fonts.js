@@ -1,4 +1,5 @@
 import fs from 'fs'
+import chalk from 'chalk'
 import fonter from 'gulp-fonter-fix'
 import ttf2woff2 from 'gulp-ttf2woff2'
 
@@ -89,7 +90,14 @@ const fontStyle = () => {
         })
       } else {
         // Если файл есть нужно его удалить
-        console.log('Файл scss/config/fonts.scss уже существует. Для обновления файла нужно его удалить!');
+        console.log(
+					chalk
+						.bold
+						.white
+						.bgGreenBright(
+							'Файл scss/config/fonts.scss уже существует.\nДля обновления файла нужно его удалить!'
+						)
+        );
       }
     }
   })

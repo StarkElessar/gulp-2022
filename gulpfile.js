@@ -4,6 +4,7 @@ import { plugins } from './gulp/config/plugins.js' // Импорт общих п
 
 // Импорт задач
 import { copy } from './gulp/tasks/copy.js'
+import { copyRootFiles } from './gulp/tasks/copyRootFiles.js'
 import { reset } from './gulp/tasks/reset.js'
 import { html } from './gulp/tasks/html.js'
 import { server } from './gulp/tasks/server.js'

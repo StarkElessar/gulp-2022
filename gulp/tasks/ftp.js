@@ -2,11 +2,12 @@ import { configFTP } from '../config/ftp.js'
 import vinylFTP from 'vinyl-ftp'
 import util from 'gulp-util'
 
-export const ftp = () => {
+const ftp = () => {
   configFTP.log = util.log
   const ftpConnect = vinylFTP.create(configFTP)
 
-  return app.gulp.src(`${app.path.buildFolder}/**/*.*`, {})
+  return app.gulp
+	  .src(`${app.path.buildFolder}/**/*.*`, {})
     .pipe(app.plugins.plumber(
       app.plugins.notify.onError({
         title: 'FTP',
@@ -15,3 +16,5 @@ export const ftp = () => {
     ))
     .pipe(ftpConnect.dest(`/${app.path.ftp}/${app.path.root}`))
 }
+
+export { ftp }

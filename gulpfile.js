@@ -1,5 +1,5 @@
 import gulp from 'gulp' // Основной модуль
-import { path } from './gulp/config/path.js' // Импорт путей
+import { filePaths } from './gulp/config/paths.js' // Импорт путей
 import { plugins } from './gulp/config/plugins.js' // Импорт общих плагинов
 
 // Импорт задач
@@ -19,18 +19,18 @@ import { ftp } from './gulp/tasks/ftp.js'
 global.app = {
   isBuild: process.argv.includes('--build'),
   isDev: !process.argv.includes('--build'),
-  path,
+	path: filePaths,
   gulp,
   plugins,
 }
 
 // Наблюдатель за изменениями в файлах
 function watcher() {
-  gulp.watch(path.watch.static, copy)
-  gulp.watch(path.watch.html, html)
-  gulp.watch(path.watch.scss, scss)
-  gulp.watch(path.watch.js, js)
-  gulp.watch(path.watch.images, images)
+  gulp.watch(filePaths.watch.static, copy)
+  gulp.watch(filePaths.watch.html, html)
+  gulp.watch(filePaths.watch.scss, scss)
+  gulp.watch(filePaths.watch.js, js)
+  gulp.watch(filePaths.watch.images, images)
 }
 
 // Последовательная обработка шрифтов

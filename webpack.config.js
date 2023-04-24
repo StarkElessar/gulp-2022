@@ -3,15 +3,13 @@ import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
 const srcFolder = 'src'
-const builFolder = 'dist'
+const buildFolder = 'dist'
 
 const path = {
   root: pathNode.dirname(__filename),
   src: pathNode.resolve(srcFolder),
-  build: pathNode.resolve(builFolder),
+  build: pathNode.resolve(buildFolder),
 }
-
-console.log(path.root);
 
 export const webpackConfig = (isMode) => ({
   entry: ['@babel/polyfill', `${path.src}/js/app.js`],

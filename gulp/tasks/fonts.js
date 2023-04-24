@@ -15,9 +15,10 @@ const fontWeights = {
   black: 900,
 }
 
-export const otfToTtf = () => {
+const otfToTtf = () => {
   // Ищем файлы шрифтов .otf
-  return app.gulp.src(`${app.path.srcFolder}/fonts/*.otf`, {})
+  return app.gulp
+	  .src(`${app.path.srcFolder}/fonts/*.otf`, {})
     .pipe(app.plugins.plumber(
       app.plugins.notify.onError({
         title: 'FONTS',
@@ -30,9 +31,10 @@ export const otfToTtf = () => {
     .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`))
 }
 
-export const ttfToWoff = () => {
+const ttfToWoff = () => {
   // Ищем файлы шрифтов .ttf
-  return app.gulp.src(`${app.path.srcFolder}/fonts/*.ttf`, {})
+  return app.gulp
+	  .src(`${app.path.srcFolder}/fonts/*.ttf`, {})
     .pipe(app.plugins.plumber(
       app.plugins.notify.onError({
         title: 'FONTS',
@@ -55,7 +57,7 @@ export const ttfToWoff = () => {
 		.pipe(app.gulp.dest(`${app.path.build.fonts}`))
 }
 
-export const fontStyle = () => {
+const fontStyle = () => {
   // Файл стилей подключения шрифтов
   const fontsFile = `${app.path.srcFolder}/scss/config/fonts.scss`
   // Проверяем существуют ли файлы шрифтов
@@ -92,6 +94,19 @@ export const fontStyle = () => {
     }
   })
 
-  return app.gulp.src(`${app.path.srcFolder}`)
-  function cb() { }
+  return app.gulp.src(app.path.srcFolder)
+
+  function cb(err) {
+		if (err) {
+			console.log(chalk.bold.white.bgRed('Ошибка записи файла:'), err)
+		} else {
+		  console.log(chalk.bold.white.bgGreenBright('[Файл fonts.scss успешно записан]'))
+		}
+  }
+}
+
+export {
+	otfToTtf,
+	ttfToWoff,
+	fontStyle
 }

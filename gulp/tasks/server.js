@@ -1,4 +1,4 @@
-export const server = (done) => {
+const server = (done) => {
   app.plugins.browserSync.init({
     server: {
       baseDir: `${app.path.build.html}`
@@ -7,3 +7,5 @@ export const server = (done) => {
     port: 3000,
   })
 }
+
+export { server }

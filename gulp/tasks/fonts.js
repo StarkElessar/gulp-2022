@@ -62,15 +62,15 @@ const fontStyle = () => {
   // Файл стилей подключения шрифтов
   const fontStylesFile = `${app.path.srcFolder}/scss/config/fonts.scss`
   // Проверяем существуют ли файлы шрифтов
-  fs.readdir(app.path.build.fonts, (err, fontsFiles) => {
-    if (fontsFiles) {
+  fs.readdir(app.path.build.fonts, (err, fontFiles) => {
+    if (fontFiles) {
       // Проверяем существует ли файл стилей для подключения шрифтов
       if (!fs.existsSync(fontStylesFile)) {
         // Если файла нет, создаем его
         fs.writeFile(fontStylesFile, '', cb)
         let newFileOnly
-        
-        fontsFiles.forEach((file) => {
+
+        fontFiles.forEach((file) => {
           // Записываем подключения шрифтов в файл стилей
           const fileName = file.split('.')[0]
         

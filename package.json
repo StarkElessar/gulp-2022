@@ -11,6 +11,7 @@
     "deployFTP": "gulp deployFTP --build",
     "svgSprive": "gulp svgSprive",
     "deploy": "gh-pages -d dist",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,html,css,md,yaml,yml}\"",
     "predeploy": "npm run build"
   },
   "repository": {

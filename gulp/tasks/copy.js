@@ -1,5 +1,7 @@
-export const copy = () => {
+const copy = () => {
   return app.gulp
     .src(app.path.src.static)
     .pipe(app.gulp.dest(app.path.build.static))
 }
+
+export { copy }

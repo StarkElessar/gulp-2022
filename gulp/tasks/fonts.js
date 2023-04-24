@@ -75,8 +75,7 @@ const fontStyle = () => {
           const fileName = file.split('.')[0]
         
           if (newFileOnly !== fileName) {
-            const fontName = fileName.split('-')[0] ? fileName.split('-')[0] : fileName
-            const fontWeight = fileName.split('-')[1] ? fileName.split('-')[1] : fileName
+            const [ fontName, fontWeight = 'regular' ] = fileName.split('-')
             const fontWeightValue = fontWeights[fontWeight.toLowerCase()]
         
             fs.appendFile(

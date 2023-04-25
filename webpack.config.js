@@ -1,25 +1,27 @@
-import * as pathNode from 'path'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const srcFolder = 'src'
-const builFolder = 'dist'
-const tempCache = '.temporary_cache'
+const __filename = fileURLToPath(import.meta.url);
+const srcFolder = 'src';
+const buildFolder = 'dist';
+const tempCache = '.temporary_cache';
 
-const path = {
-  cache: pathNode.resolve(tempCache),
-  src: pathNode.resolve(srcFolder),
-  build: pathNode.resolve(builFolder),
-}
+const paths = {
+  root: path.dirname(__filename),
+  src: path.resolve(srcFolder),
+  build: path.resolve(buildFolder),
+  cache: path.resolve(tempCache),
+};
 
-export const webpackConfig = (isDev) => ({
-  entry: ['@babel/polyfill', `${path.src}/js/app.ts`],
-  devtool: 'inline-source-map',
-  mode: isDev ? 'development' : 'production',
+export const webpackConfig = (isMode) => ({
+  entry: ['@babel/polyfill', `${paths.src}/js/app.js`],
+  mode: isMode ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
-    cacheDirectory: path.cache,
+    cacheDirectory: paths.cache,
   },
   output: {
-    path: `${path.build}/js`,
+    path: `${paths.build}/js`,
     filename: 'app.min.js',
     publicPath: '/',
   },
@@ -38,4 +40,4 @@ export const webpackConfig = (isDev) => ({
       },
     ],
   },
-})
+});

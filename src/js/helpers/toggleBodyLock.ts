@@ -1,5 +1,5 @@
-import { body, lockPaddingElements, pageWrapper } from './elementsNodeList'
-import { FLS } from '../modules'
+import { body, lockPaddingElements, pageWrapper } from './elementsNodeList';
+import { FLS } from './../modules';
 /**
 * Универсальная функция для блокировки скрола при открытии модальных окон
 * При открытии модального окна вызываем: toggleBodyLock(true)
@@ -24,4 +24,4 @@ const toggleBodyLock = (isLock: boolean): void => {
   }, isLock ? 0 : 500)
 }
 
-export default toggleBodyLock
+export default toggleBodyLock;

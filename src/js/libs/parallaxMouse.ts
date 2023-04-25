@@ -3,7 +3,7 @@
 // Документация:
 
 // Подключение функционала "Чертогов Фрилансера"
-import { FLS } from './../modules'
+import { FLS } from './../modules';
 
 /*
 Предмету, который будет двигаться за мышью указать атрибут data-prlx-mouse.
@@ -48,7 +48,7 @@ export class MousePRLX {
         this.paralaxMouseInit(paralaxMouse)
         this.setLogging(`Проснулся, слежу за объектами: (${paralaxMouse.length})`)
       } else {
-        this.setLogging('Нет ни одного объекта. Сплю...zzZZZzZZz...')
+        this.setLogging('Нет ни одного объекта. Сплю...zzZZZzZZz...');
       }
     }
   }
@@ -58,15 +58,15 @@ export class MousePRLX {
       const paralaxMouseWrapper = el.closest<HTMLElement>('[data-prlx-mouse-wrapper]')
 
       // Коэф. X
-      const paramСoefficientX = el.dataset.prlxCx ? +el.dataset.prlxCx : 100
+      const paramСoefficientX = el.dataset.prlxCx ? +el.dataset.prlxCx : 100;
       // Коэф. У
-      const paramСoefficientY = el.dataset.prlxCy ? +el.dataset.prlxCy : 100
+      const paramСoefficientY = el.dataset.prlxCy ? +el.dataset.prlxCy : 100;
       // Напр. Х
-      const directionX = el.hasAttribute('data-prlx-dxr') ? -1 : 1
+      const directionX = el.hasAttribute('data-prlx-dxr') ? -1 : 1;
       // Напр. У
-      const directionY = el.hasAttribute('data-prlx-dyr') ? -1 : 1
+      const directionY = el.hasAttribute('data-prlx-dyr') ? -1 : 1;
       // Скорость анимации
-      const paramAnimation = el.dataset.prlxA ? +el.dataset.prlxA : 50
+      const paramAnimation = el.dataset.prlxA ? +el.dataset.prlxA : 50;
 
       // Объявление переменных
       let positionX = 0
@@ -74,13 +74,13 @@ export class MousePRLX {
       let coordXprocent = 0
       let coordYprocent = 0
 
-      setMouseParallaxStyle()
+      setMouseParallaxStyle();
 
       // Проверяю на наличие родителя, в котором будет считываться положение мыши
       if (paralaxMouseWrapper) {
-        mouseMoveParalax(paralaxMouseWrapper)
+        mouseMoveParalax(paralaxMouseWrapper);
       } else {
-        mouseMoveParalax()
+        mouseMoveParalax();
       }
 
       function setMouseParallaxStyle() {
@@ -95,9 +95,10 @@ export class MousePRLX {
             ${(directionX * positionX) / (paramСoefficientX / 10)}%,
             ${(directionY * positionY) / (paramСoefficientY / 10)}%,0
           );`
-        
+
         requestAnimationFrame(setMouseParallaxStyle)
       }
+
       function mouseMoveParalax(wrapper: HTMLElement | typeof window = window) {
         wrapper.addEventListener('mousemove', (event) => {
           const {clientX, clientY} = event as MouseEvent
@@ -108,18 +109,18 @@ export class MousePRLX {
             offsetTop + el.offsetHeight >= window.scrollY
           ) {
             // Получение ширины и высоты блока
-            const parallaxWidth = window.innerWidth
-            const parallaxHeight = window.innerHeight
+            const parallaxWidth = window.innerWidth;
+            const parallaxHeight = window.innerHeight;
             // Ноль по середине
             const coordX = clientX - parallaxWidth / 2
             const coordY = clientY - parallaxHeight / 2
             // Получаем проценты
-            coordXprocent = (coordX / parallaxWidth) * 100
-            coordYprocent = (coordY / parallaxHeight) * 100
+            coordXprocent = (coordX / parallaxWidth) * 100;
+            coordYprocent = (coordY / parallaxHeight) * 100;
           }
-        })
+        });
       }
-    })
+    });
   }
   // Логгинг в консоль
   setLogging(message: string) {

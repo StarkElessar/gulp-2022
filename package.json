@@ -11,6 +11,7 @@
     "deployFTP": "gulp deployFTP --build",
     "svgSprive": "gulp svgSprive",
     "deploy": "gh-pages -d dist",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,html,css,md,yaml,yml}\"",
     "predeploy": "npm run build"
   },
   "repository": {
@@ -37,6 +38,7 @@
     "@babel/preset-env": "^7.19.1",
     "babel-loader": "^8.2.5",
     "browser-sync": "^2.27.7",
+    "chalk": "^5.2.0",
     "del": "^6.0.0",
     "fs": "^0.0.1-security",
     "gh-pages": "^4.0.0",
@@ -67,6 +69,7 @@
     "gulp-webp-html-nosvg": "^1.0.1",
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
+    "prettier": "2.8.8",
     "sass": "^1.45.1",
     "vinyl-ftp": "^0.6.1",
     "webp-converter": "*2.2.3",

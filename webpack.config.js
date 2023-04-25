@@ -1,27 +1,25 @@
-import * as pathNode from 'path'
-import { fileURLToPath } from 'url'
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url)
-const srcFolder = 'src'
-const builFolder = 'dist'
+const __filename = fileURLToPath(import.meta.url);
+const srcFolder = 'src';
+const buildFolder = 'dist';
 
-const path = {
-  root: pathNode.dirname(__filename),
-  src: pathNode.resolve(srcFolder),
-  build: pathNode.resolve(builFolder),
-}
-
-console.log(path.root);
+const paths = {
+  root: path.dirname(__filename),
+  src: path.resolve(srcFolder),
+  build: path.resolve(buildFolder),
+};
 
 export const webpackConfig = (isMode) => ({
-  entry: ['@babel/polyfill', `${path.src}/js/app.js`],
+  entry: ['@babel/polyfill', `${paths.src}/js/app.js`],
   mode: isMode ? 'development' : 'production',
   cache: {
     type: 'filesystem', // По умолчанию 'memory'
-    cacheDirectory: `${path.root}/.temporary_cache`,
+    cacheDirectory: `${paths.root}/.temporary_cache`,
   },
   output: {
-    path: `${path.build}/js`,
+    path: `${paths.build}/js`,
     filename: 'app.min.js',
     publicPath: '/',
   },
@@ -42,4 +40,4 @@ export const webpackConfig = (isMode) => ({
       },
     ],
   },
-})
+});

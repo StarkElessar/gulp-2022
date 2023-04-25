@@ -11,14 +11,7 @@ declare global {
 
  Если мы хотим добавить модуль следует его расскоментировать
  */
-import {
-  isWebp,
-  headerFixed,
-  togglePopupWindows,
-  addTouchClass,
-  addLoadedClass,
-  menuInit,
-} from './modules';
+import { isWebp, headerFixed, togglePopupWindows, addTouchClass, addLoadedClass, menuInit } from './modules'
 /* Раскомментировать для использования */
 // import { MousePRLX } from './libs/parallaxMouse'
 
@@ -29,18 +22,18 @@ import {
 // import Swiper, { Navigation, Pagination } from 'swiper'
 
 /** Включить/выключить FLS (Full Logging System) (в работе) */
-window['FLS'] = location.hostname === 'localhost';
+window['FLS'] = location.hostname === 'localhost'
 
 /* Проверка поддержки webp, добавление класса webp или no-webp для HTML
  ! (i) необходимо для корректного отображения webp из css
  */
-isWebp();
+isWebp()
 /* Добавление класса touch для HTML если браузер мобильный */
 /* Раскомментировать для использования */
-addTouchClass();
+addTouchClass()
 /* Добавление loaded для HTML после полной загрузки страницы */
 /* Раскомментировать для использования */
-addLoadedClass();
+addLoadedClass()
 /* Модуль для работы с меню (Бургер) */
 /* Раскомментировать для использования */
 // menuInit()
@@ -52,11 +45,11 @@ addLoadedClass();
 // =======================================================================================================
 
 // Паралакс мышей ========================================================================================
-// const mousePrlx = new MousePRLX({})
+// const mousePrlx = new MousePRLX({});
 // =======================================================================================================
 
 // Фиксированный header ==================================================================================
-// headerFixed()
+// headerFixed();
 // =======================================================================================================
 
 /* Открытие/закрытие модальных окон ======================================================================

@@ -34,19 +34,14 @@ const isMobile: IsMobile = {
   iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
   Opera: () => navigator.userAgent.match(/Opera Mini/i),
   Windows: () => navigator.userAgent.match(/IEMobile/i),
-  any: () =>
-    isMobile.Android() ||
-    isMobile.BlackBerry() ||
-    isMobile.iOS() ||
-    isMobile.Opera() ||
-    isMobile.Windows(),
-};
+  any: () => isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows(),
+}
 
 /* Добавление класса touch для HTML если браузер мобильный */
 function addTouchClass(): void {
   // Добавление класса _touch для HTML если браузер мобильный
   if (isMobile.any()) {
-    html.classList.add('touch');
+    html.classList.add('touch')
   }
 }
 
@@ -54,17 +49,17 @@ function addTouchClass(): void {
 function addLoadedClass(): void {
   window.addEventListener('load', () => {
     setTimeout(() => {
-      html.classList.add('loaded');
-    }, 0);
-  });
+      html.classList.add('loaded')
+    }, 0)
+  })
 }
 
 // Получение хеша в адресе сайта
 const getHash = (): string | undefined => {
   if (location.hash) {
-    return location.hash.replace('#', '');
+    return location.hash.replace('#', '')
   }
-};
+}
 
 // Указание хеша в адресе сайта
 function setHash(hash: string): void {
@@ -79,7 +74,7 @@ function headerFixed(): void {
   })
 
   if (firstScreen) {
-    headerStickyObserver.observe(firstScreen);
+    headerStickyObserver.observe(firstScreen)
   }
 }
 
@@ -89,14 +84,12 @@ const togglePopupWindows = (): void => {
     const { target } = event as EventWithTarget
 
     if (target.closest('[data-type]')) {
-      const popup = document.querySelector(
-        `[data-popup="${target.dataset.type}"]`
-      ) as HTMLElement | null
+      const popup = document.querySelector(`[data-popup="${target.dataset.type}"]`) as HTMLElement | null
 
       if (document.querySelector('._is-open')) {
         document.querySelectorAll('._is-open').forEach((modal) => {
-          modal.classList.remove('_is-open');
-        });
+          modal.classList.remove('_is-open')
+        })
       }
 
       popup?.classList.add('_is-open')
@@ -106,11 +99,11 @@ const togglePopupWindows = (): void => {
     if (target.classList.contains('_overlay-bg') || target.closest('.button-close')) {
       const popup = target.closest('._overlay-bg')
 
-      popup?.classList.remove('_is-open');
-      toggleBodyLock(false);
+      popup?.classList.remove('_is-open')
+      toggleBodyLock(false)
     }
-  });
-};
+  })
+}
 
 // Модуль работы с меню (бургер) =======================================================================================================================================================================================================================
 const menuInit = (): void => {
@@ -119,16 +112,18 @@ const menuInit = (): void => {
       const { target } = event as EventWithTarget
 
       if (target.closest('.icon-menu')) {
-        html.classList.toggle('menu-open');
-        toggleBodyLock(html.classList.contains('menu-open'));
+        html.classList.toggle('menu-open')
+        toggleBodyLock(html.classList.contains('menu-open'))
       }
-    });
+    })
   }
 }
+
 const menuOpen = (): void => {
   toggleBodyLock(true)
   html.classList.add('menu-open')
 }
+
 const menuClose = (): void => {
   toggleBodyLock(false)
   html.classList.remove('menu-open')
@@ -147,4 +142,4 @@ export {
   menuInit,
   menuOpen,
   menuClose,
-};
+}

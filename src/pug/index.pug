@@ -1,14 +1,13 @@
-extends pug/layouts/base
+extends layouts/base
 
 //- Переменные для данной страницы
 block vars
-  - lang = "ru"
-  - pageTitle = "Main Page | Pug"
-  include pug/vars
+  - pageTitle = data.pageTitle
+  include vars
 
 //- Подключение шапки сайта
 block header
-  include pug/partials/header
+  include partials/header
 
 //- Подключение контентной части
 block contentPage
@@ -17,4 +16,4 @@ block contentPage
 
 //- Подключение подвала
 block footer
-  include pug/partials/footer
+  include partials/footer

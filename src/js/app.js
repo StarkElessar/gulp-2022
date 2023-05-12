@@ -14,6 +14,9 @@ import {
   addLoadedClass,
   menuInit,
 } from './modules';
+
+// import Tabs from 'modules/Tabs';
+
 /* Раскомментировать для использования */
 // import { MousePRLX } from './libs/parallaxMouse'
 
@@ -65,3 +68,5 @@ isWebp();
 /* Раскомментировать для использования */
 // togglePopupWindows()
 // =======================================================================================================
+
+// const tabs = new Tabs('default-tabs', {});

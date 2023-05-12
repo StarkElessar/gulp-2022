@@ -1,15 +1,5 @@
 import toggleBodyLock from './../helpers/toggleBodyLock';
-import {
-  html,
-  firstScreen,
-  header,
-  burgerButton,
-} from './../helpers/elementsNodeList';
-
-// logger (Full Logging System) ==========================================================================
-function FLS(message) {
-  setTimeout(() => (window.FLS ? console.log(message) : null), 0);
-}
+import { html, firstScreen, header } from './../helpers/elementsNodeList';
 
 // Проверка браузера на поддержку .webp изображений ======================================================
 function isWebp() {
@@ -21,12 +11,13 @@ function isWebp() {
     webP.src =
       'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
   };
+
   // Добавление класса _webp или _no-webp для HTML
   testWebp((support) => {
     const className = support ? 'webp' : 'no-webp';
     html.classList.add(className);
 
-    FLS(support ? 'webp поддерживается' : 'webp не поддерживается');
+    console.log(support ? 'webp поддерживается' : 'webp не поддерживается');
   });
 }
 
@@ -63,15 +54,11 @@ function addLoadedClass() {
 }
 
 // Получение хеша в адресе сайта
-const getHash = () => {
-  if (location.hash) {
-    return location.hash.replace('#', '');
-  }
-};
+const getHash = () => location.hash?.replace('#', '');
 
 // Указание хеша в адресе сайта
 function setHash(hash) {
-  hash = hash ? `#${hash}` : window.location.href.split('#')[0];
+  hash = hash ? `#${hash}` : location.href.split('#')[0];
   history.pushState('', '', hash);
 }
 
@@ -116,30 +103,7 @@ const togglePopupWindows = () => {
   });
 };
 
-// Модуль работы с меню (бургер) =========================================================================
-const menuInit = () => {
-  if (burgerButton) {
-    document.addEventListener('click', ({ target }) => {
-      if (target.closest('.icon-menu')) {
-        html.classList.toggle('menu-open');
-        toggleBodyLock(html.classList.contains('menu-open'));
-      }
-    });
-  }
-};
-
-const menuOpen = () => {
-  toggleBodyLock(true);
-  html.classList.add('menu-open');
-};
-
-const menuClose = () => {
-  toggleBodyLock(false);
-  html.classList.remove('menu-open');
-};
-
 export {
-  FLS,
   isWebp,
   isMobile,
   addTouchClass,
@@ -148,7 +112,4 @@ export {
   addLoadedClass,
   getHash,
   setHash,
-  menuInit,
-  menuOpen,
-  menuClose,
 };

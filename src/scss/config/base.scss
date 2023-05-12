@@ -16,30 +16,32 @@ body {
 * всем классам содержащим *__container
 * Например header__container, main__container и т.д.
 */
-[class*="__container"] {
+[class*='__container'] {
   max-width: rem($containerWidth + $mainOffset * 2);
   margin: 0 auto;
   padding: 0 rem($mainOffset);
 }
 // Стили отзывчивых картинок (IBG) ============================================
-[class*="-ibg"] {
+[class*='-ibg'] {
   position: relative;
-	img {
+
+  img {
     position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		object-fit: cover;
-	}
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
 }
-[class*="-ibg_contain"] {
+
+[class*='-ibg_contain'] {
   img {
     object-fit: contain;
-	}
+  }
 }
 // Стили для обертки модальных окон ===========================================
-[class*="_overlay-bg"] {
+[class*='_overlay-bg'] {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,11 +53,14 @@ body {
   z-index: 2000; // Увеличить если нужно
   padding: rem(60) rem(15); // Изменить по макету
   overflow-y: auto;
+
   @include media(768) {
-    &::-webkit-scrollbar { // Удалить из за ненадобности
+    &::-webkit-scrollbar {
+      // Удалить из за ненадобности
       display: none;
     }
   }
+
   &._is-open {
     opacity: 1;
     visibility: visible;
@@ -68,6 +73,7 @@ body {
   min-height: 100%;
   overflow: hidden; // clip - если используется в проекте position: sticky
 }
+
 .page {
   position: relative;
   flex: 1 1 auto;

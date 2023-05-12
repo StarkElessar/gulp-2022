@@ -1,10 +1,14 @@
 /**
  * @class Tabs
  * @description Represents a tabs component.
- * @param {string} selector - The CSS selector for the tabs container.
+ * @param {string} selector - The CSS selector for the tab's container.
  * @param {object} options - The options for configuring the tabs.
  */
 class Tabs {
+  /**
+   * Direction of the tabs.
+   * @type {number | string | null}
+   */
   direction = null;
   errors = {
     selectorNotExist: 'Селектор data-tabs не существует',
@@ -97,7 +101,7 @@ class Tabs {
   #events() {
     this.options.onLoaded(this);
 
-    this.triggers.forEach((trigger, i) => {
+    this.triggers.forEach((trigger) => {
       trigger.addEventListener('click', ({ currentTarget }) => {
         const currentTab = this.tabsNav.querySelector('[aria-selected]');
 

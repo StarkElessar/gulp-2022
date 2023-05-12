@@ -1,5 +1,4 @@
 import { body, lockPaddingElements, pageWrapper } from './elementsNodeList';
-import { FLS } from './../modules';
 
 /**
  * Toggles the body lock to prevent scrolling when opening modal windows.
@@ -9,7 +8,6 @@ import { FLS } from './../modules';
  * @param {boolean} isLock - Indicates whether to lock the body or unlock it.
  */
 const toggleBodyLock = (isLock) => {
-  FLS(`Попап ${isLock ? 'открыт' : 'закрыт'}`);
   const lockPaddingValue = window.innerWidth - pageWrapper.offsetWidth;
 
   setTimeout(

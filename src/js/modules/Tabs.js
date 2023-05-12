@@ -179,7 +179,7 @@ class Tabs {
 
   /**
    * Get the index of an element within an array-like object.
-   * @param {Array} array - The array-like object to search.
+   * @param {NodeListOf<Element>} array - The array-like object to search.
    * @param {HTMLElement} element - The element to find the index of.
    * @returns {number} The index of the element.
    */

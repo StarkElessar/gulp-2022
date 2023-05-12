@@ -1,7 +1,11 @@
+import gulp from 'gulp';
 import fs from 'fs';
 import chalk from 'chalk';
 import fonter from 'gulp-fonter-fix';
 import ttf2woff2 from 'gulp-ttf2woff2';
+
+import { filePaths } from '../config/paths.js';
+import { plugins } from '../config/plugins.js';
 
 const fontWeights = {
   thin: 100,
@@ -17,60 +21,44 @@ const fontWeights = {
 };
 
 const otfToTtf = () => {
-  // Ищем файлы шрифтов .otf
   return (
-    app.gulp
-      .src(`${app.path.srcFolder}/fonts/*.otf`, {})
-      .pipe(
-        app.plugins.plumber(
-          app.plugins.notify.onError({
-            title: 'FONTS',
-            message: 'Error: <%= error.message %>',
-          })
-        )
-      )
+    gulp // Ищем файлы шрифтов .otf
+      .src(`${filePaths.srcFolder}/fonts/*.otf`, {})
+      .pipe(plugins.handleError('FONTS'))
       // Конвертируем в .ttf
       .pipe(fonter({ formats: ['ttf'] }))
       // Выгружаем в исходную папку
-      .pipe(app.gulp.dest(`${app.path.srcFolder}/fonts/`))
+      .pipe(gulp.dest(`${filePaths.srcFolder}/fonts/`))
   );
 };
 
 const ttfToWoff = () => {
-  // Ищем файлы шрифтов .ttf
   return (
-    app.gulp
-      .src(`${app.path.srcFolder}/fonts/*.ttf`, {})
-      .pipe(
-        app.plugins.plumber(
-          app.plugins.notify.onError({
-            title: 'FONTS',
-            message: 'Error: <%= error.message %>',
-          })
-        )
-      )
+    gulp // Ищем файлы шрифтов .ttf
+      .src(`${filePaths.srcFolder}/fonts/*.ttf`, {})
+      .pipe(plugins.handleError('FONTS'))
       // конвертируем в .woff
       .pipe(fonter({ formats: ['woff'] }))
       // выгружаем в папку с результатом
-      .pipe(app.gulp.dest(`${app.path.build.fonts}`))
+      .pipe(gulp.dest(`${filePaths.build.fonts}`))
       // ищем файлы шрифтов .ttf
-      .pipe(app.gulp.src(`${app.path.srcFolder}/fonts/*.ttf`))
+      .pipe(gulp.src(`${filePaths.srcFolder}/fonts/*.ttf`))
       // конвертируем в .woff2
       .pipe(ttf2woff2())
       // выгружаем в папку с результатом
-      .pipe(app.gulp.dest(`${app.path.build.fonts}`))
+      .pipe(gulp.dest(`${filePaths.build.fonts}`))
       // Ищем файлы шрифтов .woff и woff2
-      .pipe(app.gulp.src(`${app.path.srcFolder}/fonts/*.{woff,woff2}`))
+      .pipe(gulp.src(`${filePaths.srcFolder}/fonts/*.{woff,woff2}`))
       // Выгружаем в папку с результатом
-      .pipe(app.gulp.dest(`${app.path.build.fonts}`))
+      .pipe(gulp.dest(`${filePaths.build.fonts}`))
   );
 };
 
 const fontStyle = () => {
   // Файл стилей подключения шрифтов
-  const fontStylesFile = `${app.path.srcFolder}/scss/config/fonts.scss`;
+  const fontStylesFile = `${filePaths.srcFolder}/scss/config/fonts.scss`;
   // Проверяем существуют ли файлы шрифтов
-  fs.readdir(app.path.build.fonts, (err, fontFiles) => {
+  fs.readdir(filePaths.build.fonts, (err, fontFiles) => {
     if (fontFiles) {
       // Проверяем существует ли файл стилей для подключения шрифтов
       if (!fs.existsSync(fontStylesFile)) {
@@ -106,7 +94,7 @@ const fontStyle = () => {
     }
   });
 
-  return app.gulp.src(app.path.srcFolder);
+  return gulp.src(filePaths.srcFolder);
 
   function cb(err) {
     if (err) {

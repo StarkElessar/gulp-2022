@@ -1,6 +1,6 @@
 {
   "name": "gulp-2022",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "description": "Сборка Gulp+Webpack+Babel с использованием TypeScript",
   "main": "gulpfile.js",
   "type": "module",
@@ -72,7 +72,7 @@
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
     "prettier": "2.8.8",
-    "sass": "^1.45.1",
+    "sass": "*1.62.1",
     "source-map-loader": "^4.0.1",
     "ts-loader": "^9.4.2",
     "tslint": "^6.1.3",

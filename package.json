@@ -65,7 +65,7 @@
     "gulp-webpcss": "^1.1.1",
     "gulp-zip": "^5.1.0",
     "prettier": "2.8.8",
-    "sass": "*1.61.1",
+    "sass": "*1.62.1",
     "vinyl-ftp": "^0.6.1",
     "webp-converter": "*2.2.3",
     "webpack": "^5.65.0",

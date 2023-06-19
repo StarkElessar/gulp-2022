@@ -1,12 +1,14 @@
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
 
-const server = (done) => {
+const server = () => {
   plugins.browserSync.init({
     server: {
-      baseDir: filePaths.build.html,
+      baseDir: filePaths.buildFolder,
     },
-    notify: false,
+    logLevel: 'info',
+    cors: true,
+    notify: true,
     port: 3000,
   });
 };

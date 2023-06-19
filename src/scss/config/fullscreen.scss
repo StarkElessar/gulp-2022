@@ -4,8 +4,8 @@
   .touch & {
     min-height: calc(var(--vh, 1vh) * 100);
 
-    @include media(767) {
-      transition: height 0.2s;
+    @include mediaMx(768) {
+      transition: height 0.2s ease-in-out;
     }
   }
 }

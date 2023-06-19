@@ -12,10 +12,7 @@
 }
 
 :focus,
-:active {
-  outline: none;
-}
-
+:active,
 a:focus,
 a:active {
   outline: none;
@@ -30,6 +27,11 @@ aside {
 
 html {
   scroll-behavior: smooth;
+
+  &.lock {
+    overflow: hidden;
+    touch-action: none;
+  }
 }
 
 html,
@@ -50,6 +52,11 @@ textarea {
 
 input::-ms-clear {
   display: none;
+}
+
+button,
+a {
+  user-select: none;
 }
 
 button {

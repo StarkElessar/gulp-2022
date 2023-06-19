@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230620001400">
+  <title>Главная</title>
+</head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+  <div class="header__container">
+    <a href="#" class="header__logo logo"></a>
+    <nav class="header__menu menu">
+      <ul class="menu__list">
+        <li class="menu__item"><a href="#" class="menu__link">Link</a></li>
+      </ul>
+    </nav>
+    
+  </div>
+</header>
+
+      <main class="page">
+        <div data-observ></div>
+
+        <div class="page__container">
+          <button data-type="popup-1" type="button">Открыть попап</button>
+        </div>
+
+      </main>
+
+      <footer class="footer">
+  <div class="footer__container">
+    
+  </div>
+</footer>
+    </div>
+
+    <div class="popup" data-popup="popup-1" data-close-overlay>
+    <div class="popup__wrapper" data-close-overlay>
+        <div class="popup__content">
+            <button class="button-close popup__close" type="button">x</button>
+            <div class="popup__body">
+                <h2>Базовый пример модального окна</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="js/app.min.js?_v=20230620001400"></script>
+  </body>
+</html>

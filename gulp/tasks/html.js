@@ -18,8 +18,10 @@ const html = () => {
       htmlMin({
         useShortDoctype: true,
         sortClassName: true,
-        collapseWhitespace: app.isBuild,
         removeComments: app.isBuild,
+
+        /** Раскомментировать если требуется минификация html */
+        //collapseWhitespace: app.isBuild,
       })
     )
     .pipe(
@@ -27,11 +29,13 @@ const html = () => {
         app.isBuild,
         versionNumber({
           value: '%DT%',
+
           append: {
             key: '_v',
             cover: 0,
             to: ['css', 'js'],
           },
+
           output: {
             file: 'gulp/version.json',
           },

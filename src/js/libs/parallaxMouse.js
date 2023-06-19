@@ -23,7 +23,7 @@
  * 	left: -15%;
  * }
  * */
-export class MousePRLX {
+class MousePRLX {
   constructor(props) {
     const defaultConfig = {
       init: true,
@@ -115,3 +115,5 @@ export class MousePRLX {
     });
   }
 }
+
+export default MousePRLX;

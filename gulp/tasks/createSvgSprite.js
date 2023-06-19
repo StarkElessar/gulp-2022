@@ -6,20 +6,21 @@ import { plugins } from '../config/plugins.js';
 
 const createSvgSprite = () => {
   return gulp
-    .src(`${filePaths.src.svgIcons}`, {})
+    .src(filePaths.src.svgIcons, {})
     .pipe(plugins.handleError('SVG'))
     .pipe(
       svgSprite({
         mode: {
           stack: {
-            sprite: `../icons/icons.svg`,
+            sprite: '../icons/icons.svg',
+
             /** Создавать страницу с перечнем иконок */
             example: true,
           },
         },
       })
     )
-    .pipe(gulp.dest(`${filePaths.build.images}`));
+    .pipe(gulp.dest(filePaths.build.images));
 };
 
 export { createSvgSprite };

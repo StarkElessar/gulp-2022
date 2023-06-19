@@ -1,4 +1,4 @@
-import Popup from './Popup.js';
+import Popup from '../helpers/Popup.js';
 
 class BurgerMenu extends Popup {
   constructor() {
@@ -15,7 +15,7 @@ class BurgerMenu extends Popup {
       document.addEventListener('click', ({ target }) => {
         if (target.closest('.icon-menu')) {
           this.html.classList.toggle('menu-open');
-          this.toggleBodyLock(this.html.classList.contains('menu-open'));
+          this.toggleBodyLock(this.isMenuOpen);
         }
       });
     }
@@ -35,6 +35,10 @@ class BurgerMenu extends Popup {
   menuClose() {
     this.toggleBodyLock(false);
     this.html.classList.remove('menu-open');
+  }
+
+  get isMenuOpen() {
+    return this.html.classList.contains('menu-open');
   }
 }
 

@@ -5,13 +5,21 @@
   })
   <body>
     <div class="wrapper">
-      @@include('html/header.html', {})
+      @@include('html/header.html')
+
       <main class="page">
         <div data-observ></div>
-        
+
+        <div class="page__container">
+          <button data-type="popup-1" type="button">Открыть попап</button>
+        </div>
+
       </main>
-      @@include('html/footer.html', {})
+
+      @@include('html/footer.html')
     </div>
-    @@include('html/script.html', {})
+
+    @@include('html/popupExample.html')
+    @@include('html/script.html')
   </body>
-</html> 
+</html>

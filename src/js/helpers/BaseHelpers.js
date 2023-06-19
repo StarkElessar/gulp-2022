@@ -62,7 +62,7 @@ class BaseHelpers {
   /** Функция для фиксированной шапки при скролле */
   static headerFixed() {
     const headerStickyObserver = new IntersectionObserver(([entry]) => {
-      this.header.classList.toggle('sticky', !entry.isIntersecting);
+      this.html.classList.toggle('header-is-sticky', !entry.isIntersecting);
     });
 
     if (this.firstScreen) {

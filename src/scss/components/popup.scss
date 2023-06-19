@@ -7,7 +7,7 @@
   height: 100%;
   opacity: 0;
   overflow-y: auto;
-  visibility: hidden;
+  pointer-events: none;
 
   /** Установить свои значения */
   padding: rem(30) rem(10);
@@ -17,7 +17,7 @@
 
   &.is-open {
     opacity: 1;
-    visibility: visible;
+    pointer-events: auto;
 
     .popup__content {
       transform: translateY(0);
@@ -44,7 +44,7 @@
     background-color: $white-100;
     transform: translateY(rem(-200));
     opacity: 0;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
 
   // .popup__close

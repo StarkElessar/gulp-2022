@@ -39,7 +39,7 @@ class PopupManager extends Popup {
       target.closest(`.${this.options.buttonCloseName}`)
     ) {
       this.closePopup(target.closest('[data-popup]'));
-      this.toggleBodyLock(true);
+      this.toggleBodyLock(false);
     }
   }
 

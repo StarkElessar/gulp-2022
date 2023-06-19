@@ -23,7 +23,6 @@ class Popup {
     }
 
     this.body.style.paddingRight = isLock ? `${lockPaddingValue}px` : '0px';
-    this.body.classList.toggle('lock', isLock);
     this.html.classList.toggle('lock', isLock);
   }
 }

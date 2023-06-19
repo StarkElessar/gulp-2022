@@ -6,6 +6,7 @@ import htmlMin from 'gulp-htmlmin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
+import { isBuild } from '../../gulpfile.js';
 
 const html = () => {
   return gulp
@@ -13,20 +14,20 @@ const html = () => {
     .pipe(plugins.handleError('HTML'))
     .pipe(fileInclude())
     .pipe(plugins.replace(/@img\//g, 'images/'))
-    .pipe(plugins.if(app.isBuild, webpHtml()))
+    .pipe(plugins.if(isBuild, webpHtml()))
     .pipe(
       htmlMin({
         useShortDoctype: true,
         sortClassName: true,
-        removeComments: app.isBuild,
+        removeComments: isBuild,
 
         /** Раскомментировать если требуется минификация html */
-        //collapseWhitespace: app.isBuild,
+        //collapseWhitespace: isBuild,
       })
     )
     .pipe(
       plugins.if(
-        app.isBuild,
+        isBuild,
         versionNumber({
           value: '%DT%',
 

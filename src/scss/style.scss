@@ -1,12 +1,16 @@
 @use 'sass:math';
 
-/** Подключение шрифтов локально из папки "./src/fonts" */
+/**
+* Подключение шрифтов локально из папки "./src/fonts"
+*/
 @import 'config/fonts';
 
 /** Подключение переменных */
 @import 'config/vars';
 
-/** Подключение sass function и mixins и extends стилей */
+/**
+* Подключение sass function и mixins и extends стилей
+*/
 @import 'config/functions';
 @import 'config/mixins';
 @import 'config/patternSelectors';
@@ -15,21 +19,30 @@
 @import 'config/reset';
 
 /**
-	* Библиотеки
-	* раскомментировать для использования
-	*/
+* Библиотеки
+* раскомментировать для использования
+*/
 // @import 'libs/aos';
 // @import 'libs/swiper';
 
-/** Подключение custom scrollbar для всего сайта */
+/**
+* Подключение custom scrollbar для всего сайта
+*/
 @import 'config/scrollbar';
 
-/** Общие параметры, шаблоны(заготовки) и вспомогательные классы */
+/**
+* Общие параметры, шаблоны(заготовки) и вспомогательные классы
+*/
 @import 'config/base';
 
-/** БЕМ блоки используемые во всё проекте */
+/**
+* БЕМ блоки используемые во всё проекте
+*/
 @import 'config/common';
 
-/** Подключение стилей отдельных блоков и секций */
+/**
+* Подключение стилей отдельных блоков и секций
+*/
 @import 'components/header';
+@import 'components/popup';
 @import 'components/footer';

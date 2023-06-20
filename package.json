@@ -1,6 +1,6 @@
 {
   "name": "gulp-2022",
-  "version": "1.7.4",
+  "version": "1.7.5",
   "description": "Сборка Gulp+Webpack+Babel",
   "main": "gulpfile.js",
   "type": "module",

@@ -13,7 +13,7 @@
 import BaseHelpers from './helpers/BaseHelpers.js';
 import PopupManager from './modules/PopupManager';
 import BurgerMenu from './modules/BurgerMenu';
-// import Tabs from 'modules/Tabs';
+import Tabs from './modules/Tabs';
 
 BaseHelpers.checkWebpSupport();
 
@@ -50,4 +50,4 @@ new BurgerMenu().init();
  * */
 // new MousePRLX();
 
-// new Tabs('default-tabs', {});
+new Tabs('tabs-example', {});

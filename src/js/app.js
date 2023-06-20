@@ -56,4 +56,5 @@ new Tabs('tabs-example', {});
 new Accordion('.accordion', {
   shouldOpenAll: false, // true
   defaultOpen: [], // [0,1]
+  collapsedClass: 'open',
 });

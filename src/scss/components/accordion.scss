@@ -1,0 +1,88 @@
+.accordion {
+  /** Установить свои значения */
+  $radius: 4;
+  $icon-size: 24;
+
+  // .accordion__item
+  &__item {
+    /** Установить свои значения */
+    background-color: #fff;
+    border: 1px solid rgba(#000, 12%);
+    transition: 0.3s ease-in-out;
+
+    &:not(:first-of-type) {
+      border-top: 0;
+    }
+
+    &:first-of-type {
+      border-top-left-radius: rem($radius);
+      border-top-right-radius: rem($radius);
+    }
+
+    &:last-of-type {
+      border-bottom-right-radius: rem($radius);
+      border-bottom-left-radius: rem($radius);
+    }
+
+    &.open {
+      .accordion__header {
+        /** Установить свои значения */
+        background-color: #e7f1ff;
+        color: #ff4040;
+
+        &:after {
+          transform: rotate(0deg);
+        }
+      }
+
+      .accordion__content {
+        height: max-content;
+
+        /** Установить свои значения */
+        padding: rem(36) rem(8);
+      }
+    }
+  }
+
+  // .accordion__header
+  &__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    /** Установить свои значения */
+
+    padding: rem(8);
+    transition: background 0.3s ease-in-out;
+
+    &:hover {
+      background: rgba(#fff, 2%);
+    }
+
+    &:active {
+      background: rgba(#fff, 5%);
+    }
+
+    @include pseudocell(after, static) {
+      transform: rotate(180deg);
+      width: rem($icon-size);
+      height: rem($icon-size);
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230c63e4'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: transform 0.6s ease-in-out;
+    }
+  }
+
+  // .accordion__content
+  &__content {
+    height: 0;
+    overflow: hidden;
+
+    /** Установить свои значения */
+    padding: 0 rem(8);
+    transition: all 0.3s ease-in-out;
+  }
+}

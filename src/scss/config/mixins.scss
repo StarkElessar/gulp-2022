@@ -199,7 +199,9 @@
 }
 
 // !after-before
-@mixin afterBefore($type, $pos: absolute) {
+
+// !after-before
+@mixin pseudocell($type, $pos: absolute) {
   &::#{$type} {
     content: '';
     position: $pos;

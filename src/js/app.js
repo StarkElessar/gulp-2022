@@ -51,7 +51,11 @@ new BurgerMenu().init();
  * */
 // new MousePRLX();
 
-new Tabs('tabs-example', {});
+new Tabs('tabs-example', {
+  onChange: (data) => {
+    console.log(data);
+  },
+});
 
 new Accordion('.accordion', {
   shouldOpenAll: false, // true

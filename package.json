@@ -27,7 +27,7 @@
     "html"
   ],
   "author": "Sergei Chevdar <serj.elessar@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/StarkElessar/gulp-2022/issues"
   },

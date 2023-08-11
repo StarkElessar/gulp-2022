@@ -50,11 +50,11 @@ class MobileChecker {
    */
   static get isAny() {
     return (
-      this.isAndroid ||
-      this.isBlackBerry ||
-      this.isAppleOS ||
-      this.isOpera ||
-      this.isWindows
+      MobileChecker.isAndroid ||
+      MobileChecker.isBlackBerry ||
+      MobileChecker.isAppleOS ||
+      MobileChecker.isOpera ||
+      MobileChecker.isWindows
     );
   }
 }

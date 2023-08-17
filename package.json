@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpack-babel-easy-build",
-  "version": "1.1.2",
+  "version": "1.2.2",
   "description": "Облегченная версия сборки Gulp + WebPack + Babel без лишнего функционала для разворачивания быстрых тестовых проектов.",
   "main": "gulpfile.js",
   "type": "module",

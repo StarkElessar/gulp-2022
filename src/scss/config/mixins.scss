@@ -79,20 +79,13 @@
 }
 
 // !gradient for text
-@mixin textGradient($gradient) {
+@mixin text-gradient($gradient) {
   background: $gradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-// !media
-@mixin media($width) {
-  @media (max-width: #{$width + '.98' + px}) {
-    @content;
-  }
-}
-
-@mixin mediaMx($value) {
+@mixin media-mx($value) {
   $width: em($value);
 
   @media (max-width: $width) {
@@ -100,7 +93,7 @@
   }
 }
 
-@mixin mediaMn($value) {
+@mixin media-mn($value) {
   $width: em($value + 0.98);
 
   @media (min-width: $width) {
@@ -108,7 +101,7 @@
   }
 }
 
-@mixin anyHover() {
+@mixin any-hover() {
   @media (any-hover: hover) {
     &:hover {
       @content;
@@ -117,21 +110,21 @@
 }
 
 // !:not (last-child)
-@mixin notLast() {
+@mixin not-last() {
   &:not(:last-child) {
     @content;
   }
 }
 
 // !:not (first-child)
-@mixin notFirst() {
+@mixin not-first() {
   &:not(:first-child) {
     @content;
   }
 }
 
 // !обрезает текст до определенного кол-ва строк, остаток заменяет на 3 точки (...)
-@mixin lineClamp($value) {
+@mixin line-clamp($value) {
   display: -webkit-box;
   -webkit-line-clamp: $value;
   -webkit-box-orient: vertical;
@@ -139,22 +132,10 @@
 }
 
 // !styled placeholder for TextArea
-@mixin styledPlaceholder($color, $fontSize: inherit, $lineHeight: normal) {
-  &:-moz-placeholder {
-    color: $color;
-    font-size: $fontSize;
-    line-height: $lineHeight;
-  }
-  &::-moz-placeholder {
-    color: $color;
-    font-size: $fontSize;
-    line-height: $lineHeight;
-  }
-  &::-webkit-input-placeholder {
-    color: $color;
-    font-size: $fontSize;
-    line-height: $lineHeight;
-  }
+@mixin styled-placeholder($color, $fontSize: inherit, $lineHeight: normal) {
+  &:-moz-placeholder,
+  &::-moz-placeholder,
+  &::-webkit-input-placeholder,
   &:-ms-input-placeholder {
     color: $color;
     font-size: $fontSize;
@@ -163,45 +144,28 @@
 }
 
 // !плавное убирание placeholder
-@mixin hidePlaceholder($time: 300, $effect: ease) {
-  &::-webkit-input-placeholder {
-    opacity: 1;
-    transition: opacity #{$time} + ms $effect;
-  }
-  &::-moz-placeholder {
-    opacity: 1;
-    transition: opacity #{$time} + ms $effect;
-  }
-  &:-moz-placeholder {
-    opacity: 1;
-    transition: opacity #{$time} + ms $effect;
-  }
+@mixin hide-placeholder($time: 300, $effect: ease) {
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-moz-placeholder,
   &:-ms-input-placeholder {
     opacity: 1;
     transition: opacity #{$time} + ms $effect;
   }
-  &:focus::-webkit-input-placeholder {
-    opacity: 0;
-    transition: opacity #{$time} + ms $effect;
-  }
-  &:focus::-moz-placeholder {
-    opacity: 0;
-    transition: opacity #{$time} + ms $effect;
-  }
-  &:focus:-moz-placeholder {
-    opacity: 0;
-    transition: opacity #{$time} + ms $effect;
-  }
-  &:focus:-ms-input-placeholder {
-    opacity: 0;
-    transition: opacity #{$time} + ms $effect;
+
+  &:focus {
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-moz-placeholder,
+    &:-ms-input-placeholder {
+      opacity: 0;
+      transition: opacity #{$time} + ms $effect;
+    }
   }
 }
 
 // !after-before
-
-// !after-before
-@mixin pseudocell($type, $pos: absolute) {
+@mixin pseudo-cell($type, $pos: absolute) {
   &::#{$type} {
     content: '';
     position: $pos;

@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  transition: var(--bs-transition);
+  transition: background-color var(--bs-transition);
   z-index: 50;
 
   .header-is-sticky & {

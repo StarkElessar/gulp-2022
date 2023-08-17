@@ -3,22 +3,16 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
-  color: $fontColor;
-}
 
-*:before, 
-*:after {
-  box-sizing: border-box;
-}
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
 
-:focus, 
-:active {
-  outline: none;
-}
-
-a:focus,
-a:active {
-  outline: none;
+  &:focus,
+  &:active {
+    outline: none;
+  }
 }
 
 nav,
@@ -28,14 +22,30 @@ aside {
   display: block;
 }
 
+html {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+
+  &.loaded {
+    opacity: 1;
+  }
+
+  &.lock {
+    overflow: hidden;
+  }
+}
+
 html,
 body {
-	width: 100%;
+  width: 100%;
   height: 100%;
-	font-size: $fontSize;
+}
+
+body {
+  font-size: $fontSize;
   font-family: $fontFamily;
   font-weight: $fontWeight;
-	line-height: 1;
+  line-height: 1;
 }
 
 input,
@@ -50,27 +60,29 @@ input::-ms-clear {
 
 button {
   cursor: pointer;
-} 
 
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
 }
 
 a {
   text-decoration: none;
+
   &:visited {
     text-decoration: none;
   }
+
   &:hover {
     text-decoration: none;
   }
 }
 
-ul, 
+ul,
 li {
   list-style: none;
-} 
+}
 
 img {
   vertical-align: top;
@@ -82,7 +94,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-size:inherit;
+  font-size: inherit;
   font-weight: 400;
 }
 

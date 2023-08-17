@@ -2,7 +2,7 @@
 * @extend %имя шаблона;
 */
 // Счетчик для списка
-%listCounter {
+%list-counter {
   list-style-type: none;
   counter-reset: item;
 
@@ -20,7 +20,7 @@
 }
 
 // Адаптивное видео
-%responsiveVideo {
+%responsive-video {
   position: relative;
   overflow: hidden;
   height: 0;
@@ -39,7 +39,7 @@
 }
 
 // Видео в качестве фона
-%videoBackground {
+%video-background {
   video,
   iframe,
   object,
@@ -58,7 +58,7 @@
 }
 
 // Серый фильтр
-%grayfilter {
+%gray-filter {
   transition: all 0.3s ease 0s;
   filter: grayscale(1);
 
@@ -70,7 +70,7 @@
 }
 
 // Отменить выделение
-%noselect {
+%no-select {
   user-select: none;
 }
 
@@ -80,13 +80,19 @@
 }
 
 // Плавный скролл
-%smoothscroll {
+%smooth-scroll {
   -webkit-overflow-scrolling: touch;
 }
 
 // Скрыть скролл
-%hidescroll {
+%hide-scroll {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

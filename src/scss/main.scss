@@ -19,13 +19,6 @@
 @import 'config/reset';
 
 /**
-* Библиотеки
-* раскомментировать для использования
-*/
-// @import 'libs/aos';
-// @import 'libs/swiper';
-
-/**
 * Подключение custom scrollbar для всего сайта
 */
 @import 'config/scrollbar';
@@ -38,14 +31,4 @@
 /**
 * БЕМ блоки используемые во всё проекте
 */
-@import 'config/common';
-
-/**
-* Подключение стилей отдельных блоков и секций
-*/
-@import 'components/header';
-@import 'components/popup';
-@import 'components/checkbox';
-@import 'components/tabs';
-@import 'components/accordion';
-@import 'components/footer';
+@import 'common';

@@ -42,7 +42,7 @@ const html = (isBuild) => {
         })
       )
     )
-    .pipe(gulp.dest(filePaths.build.html))
+    .pipe(gulp.dest(filePaths.buildFolder))
     .pipe(plugins.browserSync.stream());
 };
 

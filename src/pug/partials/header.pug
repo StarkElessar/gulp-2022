@@ -1,9 +1,10 @@
-header.header 
-  .header__container 
-    a.header__logo.logo(href="#") Logo 
-    nav.header__menu.menu 
-      ul.menu__list
-        for link in navLinks
-          +menuLinks(link.url, link.name, "_link")
+header.header
+	.header__container
+		a.header__logo.logo(href="#") Logo
 
-    include iconMenu
+		nav.header__menu.menu
+			ul.menu__list
+				for link in navLinks
+					+menuLinks(link.url, link.name, "_link")
+
+		include iconMenu

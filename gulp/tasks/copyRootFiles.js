@@ -1,14 +1,19 @@
+import gulp from 'gulp';
+import { plugins } from '../config/plugins.js';
+import { filePaths } from '../config/paths.js';
+
 const copyRootFiles = () => {
   const config = {
     dot: true,
     allowEmpty: true,
   };
+
   /** Добавляем файлы, которые нужны в корне проекта */
   const files = ['favicon.ico', '.htaccess'];
 
-  return app.gulp
-    .src(app.plugins.concat(app.path.srcFolder, files), config)
-    .pipe(app.gulp.dest(app.path.buildFolder));
+  return gulp
+    .src(plugins.concat(filePaths.srcFolder, files), config)
+    .pipe(gulp.dest(filePaths.buildFolder));
 };
 
 export { copyRootFiles };

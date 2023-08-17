@@ -1,7 +1,29 @@
-@keyframes showHeader {
+@keyframes show-header {
   0% {
     top: -100%;
-  } 100% {
+  }
+
+  100% {
     top: 0;
+  }
+}
+
+@keyframes fade-up-big {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
   }
 }

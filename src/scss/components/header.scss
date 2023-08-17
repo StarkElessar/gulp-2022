@@ -1,29 +1,39 @@
-// =====================================================================================================================
 .header {
   width: 100%;
-  &.sticky {
+  transition: all 0.3s ease-in-out;
+  z-index: 50;
+
+  .header-is-sticky & {
     // ..стили для липкого хедера
+    position: fixed;
+    background-color: #007aff;
   }
+
   // .header__container
   &__container {
     height: rem($headerHeight);
     display: flex;
     align-items: center;
+
+    .header-is-sticky & {
+      height: rem($headerHeight - 50);
+    }
   }
 }
-// =====================================================================================================================
 
 // Burger
 /*
 .icon-menu {
   display: none;
-  @include media(767) {
+
+  @include mediaMx(768) {
     display: block;
     position: relative;
     width: rem(30);
     height: rem(18);
     cursor: pointer;
     z-index: 5;
+
     span,
     &::before,
     &::after {
@@ -35,23 +45,29 @@
       height: rem(2);
       background-color: #000;
     }
+
     &::before {
       top: 0;
     }
+
     &::after {
       bottom: 0;
     }
+
     span {
       top: calc(50% - rem(1));
     }
+
     .menu-open & {
       span {
         width: 0;
       }
+
       &::before {
         top: calc(50% - rem(1));
         transform: rotate(-45deg);
       }
+
       &::after {
         bottom: calc(50% - rem(1));
         transform: rotate(45deg);

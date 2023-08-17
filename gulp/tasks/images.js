@@ -1,26 +1,24 @@
+import gulp from 'gulp';
 import webp from 'gulp-webp';
-import imagemin from 'gulp-imagemin';
+import imageMin from 'gulp-imagemin';
+
+import { plugins } from '../config/plugins.js';
+import { filePaths } from '../config/paths.js';
+import { isBuild } from '../../gulpfile.js';
 
 const images = () => {
-  return app.gulp
-    .src(app.path.src.images)
+  return gulp
+    .src(filePaths.src.images)
+    .pipe(plugins.handleError('IMAGES'))
+    .pipe(plugins.newer(filePaths.build.images))
+    .pipe(plugins.if(isBuild, webp()))
+    .pipe(plugins.if(isBuild, gulp.dest(filePaths.build.images)))
+    .pipe(plugins.if(isBuild, gulp.src(filePaths.src.images)))
+    .pipe(plugins.if(isBuild, plugins.newer(filePaths.build.images)))
     .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: 'IMAGES',
-          message: 'Error: <%= error.message %>',
-        })
-      )
-    )
-    .pipe(app.plugins.newer(app.path.build.images))
-    .pipe(app.plugins.if(app.isBuild, webp()))
-    .pipe(app.plugins.if(app.isBuild, app.gulp.dest(app.path.build.images)))
-    .pipe(app.plugins.if(app.isBuild, app.gulp.src(app.path.src.images)))
-    .pipe(app.plugins.if(app.isBuild, app.plugins.newer(app.path.build.images)))
-    .pipe(
-      app.plugins.if(
-        app.isBuild,
-        imagemin({
+      plugins.if(
+        isBuild,
+        imageMin({
           progressive: true,
           svgoPlugins: [{ removeViewBox: false }],
           interlaced: true,
@@ -28,10 +26,10 @@ const images = () => {
         })
       )
     )
-    .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.gulp.src(app.path.src.svg))
-    .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.plugins.browserSync.stream());
+    .pipe(gulp.dest(filePaths.build.images))
+    .pipe(gulp.src(filePaths.src.svg))
+    .pipe(gulp.dest(filePaths.build.images))
+    .pipe(plugins.browserSync.stream());
 };
 
 export { images };

@@ -1,8 +1,12 @@
 .header {
   width: 100%;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 50;
 
-  &.sticky {
+  .header-is-sticky & {
     // ..стили для липкого хедера
+    position: fixed;
+    background-color: #007aff;
   }
 
   // .header__container
@@ -10,6 +14,10 @@
     height: rem($headerHeight);
     display: flex;
     align-items: center;
+
+    .header-is-sticky & {
+      height: rem($headerHeight - 50);
+    }
   }
 }
 
@@ -18,7 +26,7 @@
 .icon-menu {
   display: none;
 
-  @include media(767) {
+  @include mediaMx(768) {
     display: block;
     position: relative;
     width: rem(30);

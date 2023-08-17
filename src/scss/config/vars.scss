@@ -22,18 +22,15 @@ $secondAccentColor: $redColor;
 
 $fontFamily: $mainFont, sans-serif; // Семейство шрифта по умолчанию
 $fontColor: $blackColor; // Цвет шрифта по умолчанию
-$fontSize: rem(16); // Размер шрифта по умолчанию
+$fontSize: 16; // Размер шрифта по умолчанию
 $fontWeight: $mainWeight; // Жирность шрифта по умолчанию
 
 $standartTrans: all 280ms ease-in-out 0ms;
 
-$btnBoxShadow:  0px 2px 3px rgba(#000, 10%), 
-                0px 8px 3px rgba(#000, 10%);
+$btnBoxShadow: 0px 2px 3px rgba(#000, 10%), 0px 8px 3px rgba(#000, 10%);
 
-$lightBoxShadow:  0 0 2px 0 rgba(#000, 10%), 
-                  0 0 4px 0 rgba(#000, 10%), 
-                  0 0 8px 0 rgba(#000, 10%);
+$lightBoxShadow: 0 0 2px 0 rgba(#000, 10%), 0 0 4px 0 rgba(#000, 10%),
+  0 0 8px 0 rgba(#000, 10%);
 
-$hoverBoxShadow:  0 0 5px 0 rgba(#000, 10%), 
-                  0 0 10px 0 rgba(#000, 10%), 
-                  0 0 15px 0 rgba(#000, 10%);
+$hoverBoxShadow: 0 0 5px 0 rgba(#000, 10%), 0 0 10px 0 rgba(#000, 10%),
+  0 0 15px 0 rgba(#000, 10%);

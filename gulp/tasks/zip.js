@@ -1,21 +1,18 @@
+import gulp from 'gulp';
 import del from 'del';
 import zipPlugin from 'gulp-zip';
 
-const zip = () => {
-  del(`./${app.path.projectDirName}.zip`);
+import { filePaths } from '../config/paths.js';
+import { plugins } from '../config/plugins.js';
 
-  return app.gulp
-    .src(`${app.path.buildFolder}/**/*.*`, {})
-    .pipe(
-      app.plugins.plumber(
-        app.plugins.notify.onError({
-          title: 'ZIP',
-          message: 'Error: <%= error.message %>',
-        })
-      )
-    )
-    .pipe(zipPlugin(`${app.path.projectDirName}.zip`))
-    .pipe(app.gulp.dest('./'));
+const zip = () => {
+  del(`./${filePaths.projectDirName}.zip`);
+
+  return gulp
+    .src(`${filePaths.buildFolder}/**/*.*`, {})
+    .pipe(plugins.handleError('ZIP'))
+    .pipe(zipPlugin(`${filePaths.projectDirName}.zip`))
+    .pipe(gulp.dest('./'));
 };
 
 export { zip };

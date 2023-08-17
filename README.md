@@ -22,7 +22,7 @@
 @font-face {
   font-family: Inter;
   font-display: swap;
-  src: url('../fonts/Inter-Bold.woff2') format('woff2'), url('../fonts/Inter-Bold.woff') format('woff');
+  src: url('../fonts/Inter-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }

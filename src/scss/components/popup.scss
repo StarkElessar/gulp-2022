@@ -1,0 +1,66 @@
+.popup {
+  $white-100: #fff;
+
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  overflow-y: auto;
+  pointer-events: none;
+
+  /** Установить свои значения */
+  padding: rem(30) rem(10);
+  background-color: rgba(#000, 50%);
+  z-index: 2000;
+  transition: opacity 0.4s ease-in-out;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+
+    .popup__content {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  // .popup__wrapper
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  // .popup__content
+  &__content {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+
+    /** Установить свои значения */
+    padding: rem(30) rem(50);
+    max-width: rem(690);
+    background-color: $white-100;
+    transform: translateY(rem(-200));
+    opacity: 0;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  }
+
+  // .popup__close
+  &__close {
+    position: absolute;
+
+    /** Установить свои значения */
+    top: rem(20);
+    right: rem(20);
+    width: rem(40);
+    height: rem(40);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: #000;
+    border-radius: rem(8);
+  }
+}

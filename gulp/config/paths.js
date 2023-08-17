@@ -33,7 +33,7 @@ const filePaths = {
   buildFolder: buildFolder,
   srcFolder: srcFolder,
   projectDirName,
-  ftp: ``, // Путь к нужной папке на удаленном сервере. gulp добавит имя папки проекта автоматически
+  ftp: ``, // Путь к нужной папке на удаленном сервере. Gulp добавит имя папки проекта автоматически
 };
 
 export { filePaths };

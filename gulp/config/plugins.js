@@ -5,8 +5,18 @@ import browserSync from 'browser-sync'; // Локальный сервер
 import newer from 'gulp-newer'; // Проверка обновления
 import ifPlugin from 'gulp-if'; // Условное ветление
 
-const concatPathAndFileName = (path, files) =>
-  files.map((file) => `${path}/${file}`);
+const concatPathAndFileName = (path, files) => {
+  return files.map((file) => `${path}/${file}`);
+};
+
+const handleError = (taskName) => {
+  return plumber({
+    errorHandler: notify.onError({
+      title: taskName,
+      message: 'Error: <%= error.message %>',
+    }),
+  });
+};
 
 export const plugins = {
   if: ifPlugin,
@@ -16,4 +26,5 @@ export const plugins = {
   browserSync,
   newer,
   concat: concatPathAndFileName,
+  handleError,
 };

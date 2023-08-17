@@ -24,14 +24,12 @@ aside {
 
 html {
   opacity: 0;
-  transition: opacity .3s ease-in-out;
-
-  &.loaded {
-    opacity: 1;
-  }
+  scroll-behavior: smooth;
+  transition: opacity .8s ease-in-out;
 
   &.lock {
     overflow: hidden;
+    touch-action: none;
   }
 }
 
@@ -65,6 +63,11 @@ button {
     padding: 0;
     border: 0;
   }
+}
+
+button,
+a {
+  user-select: none;
 }
 
 a {

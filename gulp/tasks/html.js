@@ -5,7 +5,7 @@ import pug from 'gulp-pug';
 
 import data from '../../src/static/data.json' assert { type: 'json' };
 
-const html = () => {
+export const html = () => {
   return app.gulp
     .src(app.path.src.html)
     .pipe(
@@ -31,8 +31,10 @@ const html = () => {
       htmlMin({
         useShortDoctype: true,
         sortClassName: true,
-        collapseWhitespace: app.isBuild,
-        removeComments: app.isBuild,
+        removeComments: isBuild,
+
+        /** Раскомментировать если требуется минификация html */
+        //collapseWhitespace: isBuild,
       })
     )
     .pipe(
@@ -40,11 +42,13 @@ const html = () => {
         app.isBuild,
         versionNumber({
           value: '%DT%',
+
           append: {
             key: '_v',
             cover: 0,
             to: ['css', 'js'],
           },
+
           output: {
             file: 'gulp/version.json',
           },

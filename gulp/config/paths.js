@@ -1,14 +1,12 @@
 import path from 'path';
 
-const projectDirName = path.basename(path.resolve());
-const buildFolder = `./dist`;
-const srcFolder = `./src`;
+const buildFolder = './dist';
+const srcFolder = './src';
 
 const filePaths = {
   build: {
     js: `${buildFolder}/js/`,
     css: `${buildFolder}/css/`,
-    html: `${buildFolder}/`,
     images: `${buildFolder}/images/`,
     fonts: `${buildFolder}/fonts/`,
     static: `${buildFolder}/static/`,
@@ -25,15 +23,18 @@ const filePaths = {
   watch: {
     js: `${srcFolder}/js/**/*.js`,
     scss: `${srcFolder}/scss/**/*.scss`,
-    html: [`${srcFolder}/pug/index.pug`, `${srcFolder}/pug/pages/*.pug`],
+    html: `${srcFolder}/pug/**/*.pug`,
     images: `${srcFolder}/**/*.{jpg,jpeg,png,svg,gif,webp,ico}`,
     static: `${srcFolder}/static/**/*.*`,
   },
-  clean: buildFolder,
-  buildFolder: buildFolder,
-  srcFolder: srcFolder,
-  projectDirName,
-  ftp: ``, // Путь к нужной папке на удаленном сервере. Gulp добавит имя папки проекта автоматически
+  buildFolder,
+  srcFolder,
+  projectDirName: path.basename(path.resolve()),
+  /**
+   * The path to the desired folder on the remote server.
+   * Gulp will add the project name automatically - based on the folder name:
+   * */
+  ftp: ``,
 };
 
 export { filePaths };

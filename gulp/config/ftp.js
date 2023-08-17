@@ -1,8 +1,8 @@
 const configFTP = {
-  host: '', // Адрес FTP сервера
-  user: '', // Имя пользователя
-  password: '', // Пароль
-  parallel: 20, // Кол-во одновременных потоков
+  host: '', // Address FTP server
+  user: '', // User name
+  password: '', // Password
+  parallel: 20, // Number of concurrent streams
 };
 
 export { configFTP };

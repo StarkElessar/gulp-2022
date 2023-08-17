@@ -4,9 +4,8 @@ import imageMin from 'gulp-imagemin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { isBuild } from '../../gulpfile.js';
 
-const images = () => {
+const images = (isBuild) => {
   return gulp
     .src(filePaths.src.images)
     .pipe(plugins.handleError('IMAGES'))

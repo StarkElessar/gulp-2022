@@ -14,7 +14,7 @@ const createSvgSprite = () => {
           stack: {
             sprite: '../icons/icons.svg',
 
-            /** Создавать страницу с перечнем иконок */
+            /** Create a page with a list of icons */
             example: true,
           },
         },

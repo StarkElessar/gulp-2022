@@ -1,19 +1,25 @@
 extends layouts/base
 
-//- Переменные для данной страницы
+//- Place to connect a variables:
 block vars
-  - pageTitle = data.pageTitle
-  include vars
+	- pageTitle = data.pageTitle
+	include vars
 
-//- Подключение шапки сайта
+//- Place to connect the header
 block header
-  include partials/header
+	include partials/header
 
-//- Подключение контентной части
+//- Place to connect content of the page:
 block contentPage
-  main.page
-    div(data-observ)
+	main.page
+		div(data-observ)
+		.page__container
+			//- Example Components:
+			include partials/tabsExample
+			include partials/accordionExample
+			include partials/popupExample
+			include partials/checkBoxesExample
 
-//- Подключение подвала
+//- Place to connect the footer:
 block footer
-  include partials/footer
+	include partials/footer

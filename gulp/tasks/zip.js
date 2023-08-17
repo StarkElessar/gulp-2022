@@ -6,7 +6,8 @@ import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
 
 const zip = () => {
-  del(`./${filePaths.projectDirName}.zip`);
+  del(`./${filePaths.projectDirName}.zip`)
+    .then((result) => console.log('Старая папка ZIP успешно удалена', result));
 
   return gulp
     .src(`${filePaths.buildFolder}/**/*.*`, {})

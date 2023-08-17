@@ -4,9 +4,8 @@ import { webpackConfig } from '../../webpack.config.js';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { isDev } from '../../gulpfile.js';
 
-const javaScript = () => {
+const javaScript = (isDev) => {
   return gulp
     .src(filePaths.src.js, { sourcemaps: isDev })
     .pipe(plugins.handleError('JS'))

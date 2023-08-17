@@ -2,20 +2,19 @@ import gulp from 'gulp';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import rename from 'gulp-rename';
-import cleanCss from 'gulp-clean-css'; // Сжатие CSS файла
-import webpCss from 'gulp-webpcss'; // Вывод WEBP изображений
-import groupMediaQueries from 'gulp-group-css-media-queries'; // Группировка медиа запросов
+import cleanCss from 'gulp-clean-css';
+import webpCss from 'gulp-webpcss';
+import groupMediaQueries from 'gulp-group-css-media-queries';
 import autoprefixer from 'autoprefixer';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 
 import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
-import { isBuild, isDev } from '../../gulpfile.js';
 
 const sass = gulpSass(dartSass);
 
-const scss = () => {
+const scss = (isBuild) => {
   const webpConfig = {
     webpClass: '.webp',
     noWebpClass: '.no-webp',
@@ -23,7 +22,7 @@ const scss = () => {
 
   return (
     gulp
-      .src(filePaths.src.scss, { sourcemaps: isDev })
+      .src(filePaths.src.scss, { sourcemaps: !isBuild })
       .pipe(plugins.handleError('SCSS'))
 
       .pipe(sass({ outputStyle: 'expanded' }))

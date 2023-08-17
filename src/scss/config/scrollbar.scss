@@ -1,12 +1,12 @@
 // Firefox
 * {
   scrollbar-width: rem(8);
-  scrollbar-color: $firstAccentColor #d6d6d6;
+  scrollbar-color: var(--primary-color) #d6d6d6;
 
   // Chrome, Edge, and Safari
   &::-webkit-scrollbar {
     width: rem(8);
-    background-color: $whiteColor;
+    background-color: var(--white-color);
   }
 
   &::-webkit-scrollbar-track {
@@ -18,11 +18,10 @@
   &::-webkit-scrollbar-thumb {
     border-radius: rem(4);
     border: 0 none #fff;
-    background-color: lighten($firstAccentColor, 10%);
-    transition: all 280ms ease-in-out;
+    background-color: var(--primary-color);
 
     &:hover {
-      background-color: $firstAccentColor;
+      background-color: var(--primary-hover-color);
     }
   }
 }

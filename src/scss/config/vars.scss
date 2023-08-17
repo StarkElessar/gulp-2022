@@ -1,6 +1,4 @@
 $mainOffset: 15; // отступы безопасности для контейнера
-$mainFont: ''; // !указать здесь основное семейство шрифта
-
 $maxWidth: 1920; // максимальная ширина страницы
 $minWidth: 320; // минимальная ширина телефона
 $containerWidth: 1160; // ширина контейнера из макета
@@ -10,12 +8,12 @@ $headerHeight: 100;
 $footerHeight: 100;
 
 :root {
-  --bs-font-family: $mainFont, sans-serif; // Семейство шрифта по умолчанию
+  --bs-font-family: 'Inter', sans-serif; // Семейство шрифта по умолчанию
   --bs-font-size: 16px; // Размер шрифта по умолчанию
   --bs-font-weight: 400; // Жирность шрифта по умолчанию
   --bs-line-height: 1; // Базовая высота шрифта
   --bs-font-color: #222; // Цвет шрифта по умолчанию
-  --bs-transition: all 280ms ease-in-out 0ms;
+  --bs-transition: .3s ease-in-out;
   --bs-radius: 10px;
 
   --primary-color: #131313;

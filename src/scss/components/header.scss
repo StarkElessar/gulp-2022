@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  transition: all 0.3s ease-in-out;
+  transition: var(--bs-transition);
   z-index: 50;
 
   .header-is-sticky & {
@@ -26,7 +26,7 @@
 .icon-menu {
   display: none;
 
-  @include mediaMx(768) {
+  @include media-mx(768) {
     display: block;
     position: relative;
     width: rem(30);

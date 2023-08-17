@@ -1,13 +1,13 @@
 .footer {
   padding: rem(20) 0;
-  background: $blackColor;
+  background: var(--black-color);
 
   // .footer__container
   &__container {
     display: flex;
     align-items: center;
 
-    @include media(510) {
+    @include media-mx(510) {
       flex-direction: column;
       align-items: flex-start;
     }

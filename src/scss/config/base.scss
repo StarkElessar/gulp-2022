@@ -10,7 +10,7 @@
 * Например header__container, main__container и т.д.
 */
 [class*='__container'] {
-  max-width: rem($containerWidth + $mainOffset * 2);
+  max-width: rem($maxWidthContainer);
   margin: 0 auto;
   padding: 0 rem($mainOffset);
 }

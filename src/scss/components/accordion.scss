@@ -64,7 +64,7 @@
       background: rgba(#fff, 5%);
     }
 
-    @include pseudocell(after, static) {
+    @include pseudo-cell(after, static) {
       transform: rotate(180deg);
       width: rem($icon-size);
       height: rem($icon-size);

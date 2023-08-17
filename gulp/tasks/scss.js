@@ -11,38 +11,35 @@ import postcssPresetEnv from 'postcss-preset-env';
 
 import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
-import { isBuild, isDev } from '../../gulpfile.js';
 
 const sass = gulpSass(dartSass);
 
-const scss = () => {
-  const webpConfig = {
-    webpClass: '.webp',
-    noWebpClass: '.no-webp',
-  };
+const scss = (isBuild) => {
+	const webpConfig = {
+		webpClass: '.webp',
+		noWebpClass: '.no-webp',
+	};
 
-  return (
-    gulp
-      .src(filePaths.src.scss, { sourcemaps: isDev })
-      .pipe(plugins.handleError('SCSS'))
+	return gulp
+		.src(filePaths.src.scss, { sourcemaps: !isBuild })
+		.pipe(plugins.handleError('SCSS'))
 
-      .pipe(sass({ outputStyle: 'expanded' }))
-      .pipe(plugins.replace(/@img\//g, '../images/'))
+		.pipe(sass({outputStyle: 'expanded'}))
+		.pipe(plugins.replace(/@img\//g, '../images/'))
 
-      /** Группировка медиа-запросов только для production */
-      .pipe(plugins.if(isBuild, groupMediaQueries()))
+		/** Группировка медиа-запросов только для production */
+		.pipe(plugins.if(isBuild, groupMediaQueries()))
 
-      .pipe(plugins.if(isBuild, webpCss(webpConfig)))
-      .pipe(plugins.if(isBuild, postcss([autoprefixer(), postcssPresetEnv()])))
+		.pipe(plugins.if(isBuild, webpCss(webpConfig)))
+		.pipe(plugins.if(isBuild, postcss([autoprefixer(), postcssPresetEnv()])))
 
-      /** Раскомментировать если нужен не сжатый дубль файла стилей */
-      // .pipe(gulp.dest(filePaths.build.css))
+		/** Раскомментировать если нужен не сжатый дубль файла стилей */
+		// .pipe(gulp.dest(filePaths.build.css))
 
-      .pipe(plugins.if(isBuild, cleanCss()))
-      .pipe(rename({ extname: '.min.css' }))
-      .pipe(gulp.dest(filePaths.build.css))
-      .pipe(plugins.browserSync.stream())
-  );
+		.pipe(plugins.if(isBuild, cleanCss()))
+		.pipe(rename({extname: '.min.css'}))
+		.pipe(gulp.dest(filePaths.build.css))
+		.pipe(plugins.browserSync.stream());
 };
 
 export { scss };

@@ -6,9 +6,8 @@ import htmlMin from 'gulp-htmlmin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { isBuild } from '../../gulpfile.js';
 
-const html = () => {
+const html = (isBuild) => {
   return gulp
     .src(filePaths.src.html)
     .pipe(plugins.handleError('HTML'))

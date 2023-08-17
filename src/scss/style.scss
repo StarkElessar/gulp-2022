@@ -28,5 +28,9 @@
 @import 'config/common';
 
 // Подключение стилей отдельных блоков и секций:
-@import 'layout/header';
-@import 'layout/footer';
+@import 'components/header';
+@import 'components/tabs';
+@import 'components/accordion';
+@import 'components/popup';
+@import 'components/checkbox';
+@import 'components/footer';

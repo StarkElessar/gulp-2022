@@ -27,6 +27,10 @@ html {
   scroll-behavior: smooth;
   transition: opacity .8s ease-in-out;
 
+  &.loaded {
+    opacity: 1;
+  }
+
   &.lock {
     overflow: hidden;
     touch-action: none;

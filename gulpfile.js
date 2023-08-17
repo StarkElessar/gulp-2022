@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import { filePaths } from './gulp/config/paths.js';
-import { plugins } from './gulp/config/plugins.js';
 
 /**
  * Импорт задач
@@ -19,17 +18,16 @@ import { zip } from './gulp/tasks/zip.js';
 import { ftp } from './gulp/tasks/ftp.js';
 
 const isBuild = process.argv.includes('--build');
-const isDev = !process.argv.includes('--build');
 
 /**
  * Наблюдатель за изменениями в файлах
  */
 function watcher() {
   gulp.watch(filePaths.watch.static, copy);
-  gulp.watch(filePaths.watch.html, html);
-  gulp.watch(filePaths.watch.scss, scss);
-  gulp.watch(filePaths.watch.js, javaScript);
-  gulp.watch(filePaths.watch.images, images);
+  gulp.watch(filePaths.watch.html, html.bind(null, isBuild));
+  gulp.watch(filePaths.watch.scss, scss.bind(null, isBuild));
+  gulp.watch(filePaths.watch.js, javaScript.bind(null, !isBuild));
+  gulp.watch(filePaths.watch.images, images.bind(null, isBuild));
 }
 
 /**
@@ -43,10 +41,10 @@ const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
 const devTasks = gulp.parallel(
   copy,
   copyRootFiles,
-  html,
-  scss,
-  javaScript,
-  images
+  html.bind(null, isBuild),
+  scss.bind(null, isBuild),
+  javaScript.bind(null, !isBuild),
+  images.bind(null, isBuild)
 );
 
 /**
@@ -70,4 +68,4 @@ gulp.task('default', dev);
 /**
  * Экспорт сценариев
  * */
-export { dev, build, deployZIP, deployFTP, createSvgSprite, isBuild, isDev };
+export { dev, build, deployZIP, deployFTP, createSvgSprite };

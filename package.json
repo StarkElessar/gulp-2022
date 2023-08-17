@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpack-babel-easy-build",
-  "version": "1.2.2",
+  "version": "1.3.2",
   "description": "Облегченная версия сборки Gulp + WebPack + Babel без лишнего функционала для разворачивания быстрых тестовых проектов.",
   "main": "gulpfile.js",
   "type": "module",
@@ -29,14 +29,11 @@
   },
   "homepage": "https://github.com/StarkElessar/gulp-2022#readme",
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.19.1",
     "autoprefixer": "^10.4.14",
-    "babel-loader": "^8.2.5",
     "browser-sync": "^2.27.7",
     "chalk": "^5.2.0",
     "del": "^6.0.0",
+    "esbuild-loader": "^4.0.0",
     "fs": "^0.0.1-security",
     "gh-pages": "^4.0.0",
     "gulp": "^4.0.2",

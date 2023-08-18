@@ -95,7 +95,7 @@ const fontStyle = async () => {
 		let newFileOnly;
 
 		for (const file of fontFiles) {
-			const [fileName, type] = file.split('.');
+			const [fileName] = file.split('.');
 
 			if (newFileOnly !== fileName) {
 				const [name, weight = 'regular'] = fileName.split('-');

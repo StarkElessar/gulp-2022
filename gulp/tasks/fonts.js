@@ -3,111 +3,112 @@ import fs from 'fs';
 import chalk from 'chalk';
 import fonter from 'gulp-fonter-fix';
 import ttf2woff2 from 'gulp-ttf2woff2';
+import del from 'del';
 
 import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
 
+const {fontFacesFile} = filePaths.src;
+const italicRegex = /italic/i;
+const cleanSeparator = /(?:_|__|-|\s)?(italic)/i;
+
 const fontWeights = {
-  thin: 100,
-  extralight: 200,
-  light: 300,
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-  extrabold: 800,
-  heavy: 800,
-  black: 900,
+	thin: 100,
+	hairline: 100,
+	extralight: 200,
+	ultralight: 200,
+	light: 300,
+	regular: 400,
+	medium: 500,
+	semibold: 600,
+	demibold: 600,
+	bold: 700,
+	extrabold: 800,
+	ultrabold: 800,
+	black: 900,
+	heavy: 900,
+	extrablack: 950,
+	ultrablack: 950
 };
 
-const otfToTtf = () => {
-  return (
-    gulp /** Поиск шрифтов .otf */
-      .src(`${filePaths.srcFolder}/fonts/*.otf`, {})
-      .pipe(plugins.handleError('FONTS'))
+const fontFaceTemplate = (name, file, weight, style) => `@font-face {
+	font-family: ${name};
+	font-display: swap;
+	src: url("../fonts/${file}.woff2") format("woff2");
+	font-weight: ${weight};
+	font-style: ${style};
+}\n`;
 
-      /** Конвертация в .ttf */
-      .pipe(fonter({ formats: ['ttf'] }))
+const otfToTtf = (done) => {
+	if (fs.existsSync(fontFacesFile)) return done();
+	/** Поиск шрифтов .otf */
+	return gulp.src(`${filePaths.src.fonts}/*.otf`, {})
+		.pipe(plugins.handleError('FONTS [otfToTtf]'))
 
-      /** Выгрузка в исходную папку */
-      .pipe(gulp.dest(`${filePaths.srcFolder}/fonts/`))
-  );
+		/** Конвертация в .ttf */
+		.pipe(fonter({formats: ['ttf']}))
+
+		/** Выгрузка в исходную папку */
+		.pipe(gulp.dest(filePaths.src.fonts));
 };
 
 const ttfToWoff = () => {
-  return (
-    gulp /** Поиск шрифтов [.ttf] и конвертация в [.woff2] */
-      .src(`${filePaths.srcFolder}/fonts/*.ttf`, {})
-      .pipe(plugins.handleError('FONTS'))
-      .pipe(ttf2woff2())
-      .pipe(gulp.dest(`${filePaths.build.fonts}`))
+	if (fs.existsSync(fontFacesFile)) {
+		return gulp.src(`${filePaths.src.fonts}/*.woff2`, {})
+			.pipe(plugins.handleError('FONTS [ttfToWoff]'))
+			.pipe(gulp.dest(filePaths.build.fonts));
+	}
 
-      /**
-       * Если нужно раскомментировать.
-       * Конвертация в [.woff]
-       * */
-      //.pipe(gulp.src(`${filePaths.srcFolder}/fonts/*.ttf`))
-      //.pipe(fonter({ formats: ['woff'] }))
-      //.pipe(gulp.dest(`${filePaths.build.fonts}`))
+	/** Поиск шрифтов [.ttf] и конвертация в [.woff2] */
+	return gulp.src(`${filePaths.src.fonts}/*.ttf`, {})
+		.pipe(plugins.handleError('FONTS [ttfToWoff]'))
+		.pipe(ttf2woff2())
+		.pipe(gulp.dest(filePaths.src.fonts))
 
-      /** Поиск шрифтов [.woff, .woff2] и выгрузка в финальную папку */
-      .pipe(gulp.src(`${filePaths.srcFolder}/fonts/*.{woff,woff2}`))
-      .pipe(gulp.dest(`${filePaths.build.fonts}`))
-  );
+		/** Если нужно раскомментировать. Конвертация в [.woff] */
+		//.pipe(gulp.src(`${filePaths.src.fonts}/*.ttf`))
+		//.pipe(fonter({ formats: ['woff'] }))
+		//.pipe(gulp.dest(filePaths.build.fonts))
+
+		/** Поиск шрифтов [.woff, .woff2] и выгрузка в финальную папку */
+		.pipe(gulp.src(`${filePaths.src.fonts}/*.{woff,woff2}`))
+		.pipe(gulp.dest(filePaths.build.fonts));
 };
 
-const fontStyle = () => {
-  /** Файл стилей подключения шрифтов */
-  const fontStylesFile = `${filePaths.srcFolder}/scss/config/fonts.scss`;
+const fontStyle = async () => {
+	try {
+		if (fs.existsSync(fontFacesFile)) {
+			console.log(chalk.bold.white.bgGreenBright(
+				'Файл scss/config/fonts.scss уже существует.\nДля обновления файла его нужно удалить!'
+			));
+			return;
+		}
 
-  /** Чтение папки шрифтов и проверка существуют ли они */
-  fs.readdir(filePaths.build.fonts, (err, fontFiles) => {
-    if (fontFiles) {
-      /** Проверка, существует ли файл стилей для подключения шрифтов */
-      if (!fs.existsSync(fontStylesFile)) {
-        /** Если файла нет, создаем его */
-        fs.writeFile(fontStylesFile, '', cb);
-        let newFileOnly;
+		const fontFiles = await fs.promises.readdir(filePaths.build.fonts);
 
-        fontFiles.forEach((file) => {
-          /** Запись подключения шрифтов в файл стилей */
-          const fileName = file.split('.')[0];
+		if (!fontFiles) {
+			console.log(chalk.bold.white.bgRed('Нет сконвертированных шрифтов'));
+			return;
+		}
 
-          if (newFileOnly !== fileName) {
-            const [fontName, fontWeight = 'regular'] = fileName.split('-');
-            const fontWeightValue = fontWeights[fontWeight.toLowerCase()];
+		await fs.promises.writeFile(fontFacesFile, '');
+		let newFileOnly;
 
-            fs.appendFile(
-              fontStylesFile,
-              `@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fileName}.woff2") format("woff2");\n\tfont-weight: ${fontWeightValue};\n\tfont-style: normal;\n}\n`,
-              cb
-            );
+		for (const file of fontFiles) {
+			const [fileName, type] = file.split('.');
 
-            newFileOnly = fileName;
-          }
-        });
-      } else {
-        /** Предупреждение, если файл есть - его нужно удалить */
-        console.log(
-          chalk.bold.white.bgGreenBright(
-            'Файл scss/config/fonts.scss уже существует.\nДля обновления файла его нужно удалить!'
-          )
-        );
-      }
-    }
-  });
+			if (newFileOnly !== fileName) {
+				const [name, weight = 'regular'] = fileName.split('-');
+				const weightString = fontWeights[weight.replace(cleanSeparator, '').toLowerCase()];
+				const fontStyle = italicRegex.test(fileName) ? 'italic' : 'normal';
 
-  return gulp.src(filePaths.srcFolder);
-
-  function cb(err) {
-    if (err) {
-      console.log(chalk.bold.white.bgRed('Ошибка записи файла: '), err);
-    } else {
-      console.log(
-        chalk.bold.white.bgGreenBright('[Файл fonts.scss успешно записан]')
-      );
-    }
-  }
+				await fs.promises.appendFile(fontFacesFile, fontFaceTemplate(name, fileName, weightString, fontStyle));
+				newFileOnly = fileName;
+			}
+		}
+	} catch (err) {
+		console.log(chalk.bold.white.bgRed('Ошибка при обработке шрифтов:\n'), err);
+	}
 };
 
 export { otfToTtf, ttfToWoff, fontStyle };

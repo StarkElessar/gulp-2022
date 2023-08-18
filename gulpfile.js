@@ -40,9 +40,14 @@ function watcher() {
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontStyle);
 
 /**
- * Основные задачи, выполняются паралельно
+ * Параллельные задачи в режиме разработки
  * */
-const mainTasks = gulp.parallel(fonts, copy, copyRootFiles, handleHTML, handleSCSS, handleJS, handleImages);
+const devTasks = gulp.parallel(copy, copyRootFiles, handleHTML, handleSCSS, handleJS, handleImages);
+
+/**
+ * Основные задачи
+ * */
+const mainTasks = gulp.series(fonts, devTasks);
 
 /**
  * Построение сценариев выполнения задач

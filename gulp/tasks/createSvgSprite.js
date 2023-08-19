@@ -2,12 +2,11 @@ import gulp from 'gulp';
 import svgSprite from 'gulp-svg-sprite';
 
 import { filePaths } from '../config/paths.js';
-import { plugins } from '../config/plugins.js';
+import { logger } from "../config/Logger.js";
 
 const createSvgSprite = () => {
-  return gulp
-    .src(filePaths.src.svgIcons, {})
-    .pipe(plugins.handleError('SVG'))
+  return gulp.src(filePaths.src.svgIcons, {})
+    .pipe(logger.handleError('COPY ROOT FILES'))
     .pipe(
       svgSprite({
         mode: {

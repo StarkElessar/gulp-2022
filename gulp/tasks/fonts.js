@@ -1,12 +1,10 @@
 import gulp from 'gulp';
 import fs from 'fs';
-import chalk from 'chalk';
 import fonter from 'gulp-fonter-fix';
 import ttf2woff2 from 'gulp-ttf2woff2';
-import del from 'del';
 
 import { filePaths } from '../config/paths.js';
-import { plugins } from '../config/plugins.js';
+import { logger } from '../config/Logger.js';
 
 const {fontFacesFile} = filePaths.src;
 const italicRegex = /italic/i;
@@ -43,7 +41,7 @@ const otfToTtf = (done) => {
 	if (fs.existsSync(fontFacesFile)) return done();
 	/** Поиск шрифтов .otf */
 	return gulp.src(`${filePaths.src.fonts}/*.otf`, {})
-		.pipe(plugins.handleError('FONTS [otfToTtf]'))
+		.pipe(logger.handleError('FONTS [otfToTtf]'))
 
 		/** Конвертация в .ttf */
 		.pipe(fonter({formats: ['ttf']}))
@@ -55,13 +53,13 @@ const otfToTtf = (done) => {
 const ttfToWoff = () => {
 	if (fs.existsSync(fontFacesFile)) {
 		return gulp.src(`${filePaths.src.fonts}/*.woff2`, {})
-			.pipe(plugins.handleError('FONTS [ttfToWoff]'))
+			.pipe(logger.handleError('FONTS [ttfToWoff]'))
 			.pipe(gulp.dest(filePaths.build.fonts));
 	}
 
 	/** Поиск шрифтов [.ttf] и конвертация в [.woff2] */
 	return gulp.src(`${filePaths.src.fonts}/*.ttf`, {})
-		.pipe(plugins.handleError('FONTS [ttfToWoff]'))
+		.pipe(logger.handleError('FONTS [ttfToWoff]'))
 		.pipe(ttf2woff2())
 		.pipe(gulp.dest(filePaths.src.fonts))
 
@@ -78,16 +76,14 @@ const ttfToWoff = () => {
 const fontStyle = async () => {
 	try {
 		if (fs.existsSync(fontFacesFile)) {
-			console.log(chalk.bold.white.bgGreenBright(
-				'Файл scss/config/fonts.scss уже существует.\nДля обновления файла его нужно удалить!'
-			));
+			logger.warning('Файл scss/config/fonts.scss уже существует.\nДля обновления файла его нужно удалить!');
 			return;
 		}
 
 		const fontFiles = await fs.promises.readdir(filePaths.build.fonts);
 
 		if (!fontFiles) {
-			console.log(chalk.bold.white.bgRed('Нет сконвертированных шрифтов'));
+			logger.error('Нет сконвертированных шрифтов');
 			return;
 		}
 
@@ -107,7 +103,7 @@ const fontStyle = async () => {
 			}
 		}
 	} catch (err) {
-		console.log(chalk.bold.white.bgRed('Ошибка при обработке шрифтов:\n'), err);
+		logger.error('Ошибка при обработке шрифтов:\n', err);
 	}
 };
 

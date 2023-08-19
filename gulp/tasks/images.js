@@ -4,11 +4,11 @@ import imageMin from 'gulp-imagemin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
+import { logger } from "../config/Logger.js";
 
 const images = (isBuild) => {
-  return gulp
-    .src(filePaths.src.images)
-    .pipe(plugins.handleError('IMAGES'))
+  return gulp.src(filePaths.src.images)
+    .pipe(logger.handleError('IMAGES'))
     .pipe(plugins.newer(filePaths.build.images))
     .pipe(plugins.if(isBuild, webp()))
     .pipe(plugins.if(isBuild, gulp.dest(filePaths.build.images)))

@@ -10,8 +10,8 @@ const createSvgSprite = () => {
     .pipe(
       svgSprite({
         mode: {
-          stack: {
-            sprite: '../icons/icons.svg',
+          symbol: {
+            sprite: '../sprite.svg',
 
             /** Создавать страницу с перечнем иконок */
             example: true,
@@ -19,7 +19,7 @@ const createSvgSprite = () => {
         },
       })
     )
-    .pipe(gulp.dest(filePaths.build.images));
+    .pipe(gulp.dest(filePaths.srcFolder + '/images'));
 };
 
 export { createSvgSprite };

@@ -7,6 +7,7 @@ import webpCss from 'gulp-webpcss'; // Output WEBP images
 import groupMediaQueries from 'gulp-group-css-media-queries';
 import autoprefixer from 'autoprefixer';
 import postcss from 'gulp-postcss';
+import sourcemaps from "gulp-sourcemaps";
 import postcssPresetEnv from 'postcss-preset-env';
 
 import { filePaths } from '../config/paths.js';
@@ -21,7 +22,8 @@ const scss = (isBuild) => {
 	};
 
 	return gulp
-		.src(filePaths.src.scss, { sourcemaps: !isBuild })
+		.src(filePaths.src.scss)
+		.pipe(plugins.if(!isBuild, sourcemaps.init()))
 		.pipe(plugins.handleError('SCSS'))
 
 		.pipe(sass({outputStyle: 'expanded'}, false))
@@ -38,6 +40,7 @@ const scss = (isBuild) => {
 
 		.pipe(plugins.if(isBuild, cleanCss()))
 		.pipe(rename({extname: '.min.css'}))
+		.pipe(plugins.if(!isBuild, sourcemaps.write('./')))
 		.pipe(gulp.dest(filePaths.build.css))
 		.pipe(plugins.browserSync.stream());
 };

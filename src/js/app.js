@@ -52,13 +52,13 @@ new BurgerMenu().init();
 // new MousePRLX();
 
 new Tabs('tabs-example', {
-  onChange: (data) => {
-    console.log(data);
-  },
+	onChange: (data) => {
+		console.log(data);
+	},
 });
 
 new Accordion('.accordion', {
-  shouldOpenAll: false, // true
-  defaultOpen: [], // [0,1]
-  collapsedClass: 'open',
+	shouldOpenAll: false, // true
+	defaultOpen: [], // [0,1]
+	collapsedClass: 'open',
 });

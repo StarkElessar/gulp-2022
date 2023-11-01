@@ -1,19 +1,23 @@
-import path from 'path';
+import { resolve, join } from 'path';
 
 const paths = {
-  src: path.resolve('src'),
-  build: path.resolve('dist'),
+  src: resolve('src'),
+  build: resolve('dist'),
 };
 
 export const webpackConfig = (isMode) => {
   return {
-    entry: ['@babel/polyfill', path.join(paths.src, 'js/app.js')],
+    context: join(paths.src, 'js'),
+
+    entry: {
+      app: './app.js',
+    },
 
     mode: isMode ? 'development' : 'production',
 
     output: {
-      path: path.join(paths.build, 'js'),
-      filename: 'app.min.js',
+      path: join(paths.build, 'js'),
+      filename: '[name].min.js',
       publicPath: '/',
     },
 

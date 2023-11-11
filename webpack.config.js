@@ -1,19 +1,24 @@
-import path from 'path';
+import { resolve, join } from 'path';
 
 export const webpackConfig = (isMode) => {
   const paths = {
-    src: path.resolve('src'),
-    build: path.resolve('dist'),
+    src: resolve('src'),
+    build: resolve('dist'),
   };
 
   return {
-    entry: path.join(paths.src, 'js/app.js'),
+    context: join(paths.src, 'js'),
+
+    entry: {
+      main: './main.js',
+      test: './test.js'
+    },
 
     mode: isMode ? 'development' : 'production',
 
     output: {
-      path: path.join(paths.build, 'js'),
-      filename: 'app.min.js',
+      path: join(paths.build, 'js'),
+      filename: '[name].min.js',
       publicPath: '/',
     },
 

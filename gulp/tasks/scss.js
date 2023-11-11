@@ -8,6 +8,7 @@ import groupMediaQueries from 'gulp-group-css-media-queries';
 import autoprefixer from 'autoprefixer';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
+import sourcemaps from "gulp-sourcemaps";
 
 import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
@@ -21,10 +22,11 @@ const scss = (isBuild) => {
 		noWebpClass: '.no-webp',
 	};
 
-	return gulp.src(filePaths.src.scss, {sourcemaps: !isBuild})
+	return gulp.src(filePaths.src.scss)
     .pipe(logger.handleError('SCSS'))
 
-		.pipe(sass({outputStyle: 'expanded'}))
+		.pipe(plugins.if(!isBuild, sourcemaps.init()))
+		.pipe(sass({ outputStyle: 'expanded' }, null))
 		.pipe(plugins.replace(/@img\//g, '../images/'))
 
 		/** Группировка медиа-запросов только для production */
@@ -37,7 +39,8 @@ const scss = (isBuild) => {
 		// .pipe(gulp.dest(filePaths.build.css))
 
 		.pipe(plugins.if(isBuild, cleanCss()))
-		.pipe(rename({extname: '.min.css'}))
+		.pipe(rename({ extname: '.min.css' }))
+		.pipe(plugins.if(!isBuild, sourcemaps.write('.')))
 		.pipe(gulp.dest(filePaths.build.css))
 		.pipe(plugins.browserSync.stream());
 };

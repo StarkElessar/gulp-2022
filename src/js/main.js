@@ -10,11 +10,11 @@
 // import AOS from 'aos'
 // import Swiper, { Navigation, Pagination } from 'swiper';
 
-import BaseHelpers from './helpers/BaseHelpers.js';
+import BaseHelpers from './helpers/BaseHelpers';
 import PopupManager from './modules/PopupManager';
 import BurgerMenu from './modules/BurgerMenu';
 import Tabs from './modules/Tabs';
-import Accordion from './modules/Accordion.js';
+import Accordion from './modules/Accordion';
 
 BaseHelpers.checkWebpSupport();
 

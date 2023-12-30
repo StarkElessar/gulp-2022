@@ -24,10 +24,8 @@ export const webpackConfig = async (isMode) => {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
+	          loader: 'esbuild-loader',
+	          options: { target: 'ES6', },
           },
           resolve: {
             fullySpecified: false,

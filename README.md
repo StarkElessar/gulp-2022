@@ -1,4 +1,4 @@
-# Start Template: Gulp + WebPack + Babel
+# Start Template: Gulp + WebPack + ESBuild-Loader
 
 Сборку делал по примеру автора [youtube](https://www.youtube.com/watch?v=jU88mLuLWlk) канала: [Фрилансер по жизни](https://www.youtube.com/c/FreelancerLifeStyle)
 
@@ -51,11 +51,14 @@
 - при импорте нет необходимости писать расширение файла `.js`, так же если осуществляется импорт из файла `index.js` необязательно это указывать:
 
 ```javascript
-import * as flsFunctions from './modules' // './modules/index.js'
+import * as helpers from './helpers' // './helpers/index.js'
 ```
 
-- `webpack` c помощью `babel` позволяет тебе писать код на любимом **ES6+**;
+- `webpack` c помощью `esbuild-loader` позволяет тебе писать код на любимом **ES6+**;
 - в режиме `"production"` при финальной сборке файлы JS сжимаются, а лишние комментарии удаляются.
+- с 11.2023 в сборке доступна сборка "мульти-файлов". То есть теперь на выходе можно иметь не один файл стилей `main.css`
+и один файл скриптов `main.js` - столько, сколько тебе нужно. Для этого в папке `./src/js` в корне создай нужные файлы, а на выходе получишь их собранными.
+Для стилей в папке `./src/scss` создай папку `pages` и там создавай новые файлы стилей для новых страниц.
 
 ## Финал
 

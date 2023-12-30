@@ -5,17 +5,17 @@ import { filePaths } from './gulp/config/paths.js';
  * Импорт задач
  */
 import { copy } from './gulp/tasks/copy.js';
-import { copyRootFiles } from './gulp/tasks/copyRootFiles.js';
+import { copyRootFiles } from './gulp/tasks/copy-root-files.js';
 import { reset } from './gulp/tasks/reset.js';
 import { html } from './gulp/tasks/html.js';
 import { server } from './gulp/tasks/server.js';
 import { scss } from './gulp/tasks/scss.js';
-import { javaScript } from './gulp/tasks/javaScript.js';
+import { javaScript } from './gulp/tasks/java-script.js';
 import { images } from './gulp/tasks/images.js';
 import { otfToTtf, ttfToWoff, fontStyle } from './gulp/tasks/fonts.js';
-import { createSvgSprite } from './gulp/tasks/createSvgSprite.js';
+import { createSvgSprite } from './gulp/tasks/create-svg-sprite.js';
 import { zip } from './gulp/tasks/zip.js';
-import { ftpDeploy } from './gulp/tasks/ftpDeploy.js';
+import { ftpDeploy } from './gulp/tasks/ftp-deploy.js';
 
 const isBuild = process.argv.includes('--build');
 const handleHTML = html.bind(null, isBuild);

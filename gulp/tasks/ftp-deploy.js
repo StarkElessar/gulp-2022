@@ -4,7 +4,7 @@ import util from 'gulp-util';
 
 import { configFTP } from '../config/ftp.js';
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const ftpDeploy = () => {
   configFTP.log = util.log;

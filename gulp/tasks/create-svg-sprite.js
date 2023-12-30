@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import svgSprite from 'gulp-svg-sprite';
 
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const createSvgSprite = () => {
   return gulp.src(filePaths.src.svgIcons, {})

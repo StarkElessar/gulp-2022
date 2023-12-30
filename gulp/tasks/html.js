@@ -6,7 +6,7 @@ import htmlMin from 'gulp-htmlmin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const html = (isBuild) => {
   return gulp.src(filePaths.src.html)

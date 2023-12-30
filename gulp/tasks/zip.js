@@ -3,7 +3,7 @@ import del from 'del';
 import zipPlugin from 'gulp-zip';
 
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const zip = () => {
   del(`./${filePaths.projectDirName}.zip`)

@@ -12,7 +12,7 @@ import sourcemaps from "gulp-sourcemaps";
 
 import { filePaths } from '../config/paths.js';
 import { plugins } from '../config/plugins.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const sass = gulpSass(dartSass);
 

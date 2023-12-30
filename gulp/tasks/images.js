@@ -4,7 +4,7 @@ import imageMin from 'gulp-imagemin';
 
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const images = (isBuild) => {
   return gulp.src(filePaths.src.images)

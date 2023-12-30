@@ -4,7 +4,7 @@ import webpack from 'webpack-stream';
 import { webpackConfig } from '../../webpack.config.js';
 import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/Logger.js";
+import { logger } from "../config/logger.js";
 
 const javaScript = async (isDev) => {
   return gulp.src(filePaths.src.js)

@@ -4,7 +4,7 @@ import fonter from 'gulp-fonter-fix';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
 import { filePaths } from '../config/paths.js';
-import { logger } from '../config/Logger.js';
+import { logger } from '../config/logger.js';
 
 const {fontFacesFile} = filePaths.src;
 const italicRegex = /italic/i;

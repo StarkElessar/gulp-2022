@@ -45,12 +45,12 @@ class MousePRLX {
       const paralaxMouseWrapper = element.closest('[data-prlx-mouse-wrapper]');
 
       /** Коэффициент X */
-      const paramСoefficientX = element.dataset.prlxCx
+      const paramCoefficientX = element.dataset.prlxCx
         ? Number(element.dataset.prlxCx)
         : 100;
 
       /** Коэффициент. У */
-      const paramСoefficientY = element.dataset.prlxCy
+      const paramCoefficientY = element.dataset.prlxCy
         ? Number(element.dataset.prlxCy)
         : 100;
 
@@ -72,24 +72,24 @@ class MousePRLX {
 
       /** Проверка на наличие родителя, в котором будет считываться положение мыши */
       if (paralaxMouseWrapper) {
-        mouseMoveParalax(paralaxMouseWrapper);
+        mouseMoveParallax(paralaxMouseWrapper);
       } else {
-        mouseMoveParalax();
+        mouseMoveParallax();
       }
 
       function setMouseParallaxStyle() {
         positionX += ((coordXPercent - positionX) * paramAnimation) / 1000;
         positionY += ((coordYPercent - positionY) * paramAnimation) / 1000;
 
-        const transformX = (directionX * positionX) / (paramСoefficientX / 10);
-        const transformY = (directionY * positionY) / (paramСoefficientY / 10);
+        const transformX = (directionX * positionX) / (paramCoefficientX / 10);
+        const transformY = (directionY * positionY) / (paramCoefficientY / 10);
 
         element.style.transform = `translate3D(${transformX}%, ${transformY}%, 0)`;
 
         requestAnimationFrame(setMouseParallaxStyle);
       }
 
-      function mouseMoveParalax(wrapper = window) {
+      function mouseMoveParallax(wrapper = window) {
         wrapper.addEventListener('mousemove', ({ clientX, clientY }) => {
           const offsetTop =
             element.getBoundingClientRect().top + window.scrollY;

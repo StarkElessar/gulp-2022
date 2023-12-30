@@ -9,7 +9,7 @@ class MobileChecker {
    * @returns {boolean} true, если устройство Android, в противном случае false.
    */
   static get isAndroid() {
-    return Boolean(this.userAgent.match(/Android/i));
+    return Boolean(MobileChecker.userAgent.match(/Android/i));
   }
 
   /**
@@ -17,7 +17,7 @@ class MobileChecker {
    * @returns {boolean} true, если устройство BlackBerry, в противном случае false.
    */
   static get isBlackBerry() {
-    return Boolean(this.userAgent.match(/BlackBerry/i));
+    return Boolean(MobileChecker.userAgent.match(/BlackBerry/i));
   }
 
   /**
@@ -25,7 +25,7 @@ class MobileChecker {
    * @returns {boolean} true, если устройство iOS, в противном случае false.
    */
   static get isAppleOS() {
-    return Boolean(this.userAgent.match(/iPhone|iPad|iPod/i));
+    return Boolean(MobileChecker.userAgent.match(/iPhone|iPad|iPod/i));
   }
 
   /**
@@ -33,7 +33,7 @@ class MobileChecker {
    * @returns {boolean} true, если устройство Opera Mini, в противном случае false.
    */
   static get isOpera() {
-    return Boolean(this.userAgent.match(/Opera Mini/i));
+    return Boolean(MobileChecker.userAgent.match(/Opera Mini/i));
   }
 
   /**
@@ -41,7 +41,7 @@ class MobileChecker {
    * @returns {boolean} true, если устройство Windows, в противном случае false.
    */
   static get isWindows() {
-    return Boolean(this.userAgent.match(/IEMobile/i));
+    return Boolean(MobileChecker.userAgent.match(/IEMobile/i));
   }
 
   /**

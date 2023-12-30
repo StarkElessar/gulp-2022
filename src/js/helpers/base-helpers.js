@@ -1,4 +1,4 @@
-import MobileChecker from './MobileChecker.js';
+import MobileChecker from './mobile-checker';
 
 class BaseHelpers {
   static html = document.documentElement;
@@ -22,7 +22,7 @@ class BaseHelpers {
     /** Добавление класса _webp или _no-webp для HTML */
     testWebp((support) => {
       const className = support ? 'webp' : 'no-webp';
-      this.html.classList.add(className);
+	    BaseHelpers.html.classList.add(className);
 
       console.log(support ? 'webp поддерживается' : 'webp не поддерживается');
     });
@@ -33,7 +33,7 @@ class BaseHelpers {
    * */
   static addTouchClass() {
     if (MobileChecker.isAny) {
-      this.html.classList.add('touch');
+	    BaseHelpers.html.classList.add('touch');
     }
   }
 
@@ -43,7 +43,7 @@ class BaseHelpers {
   static addLoadedClass() {
     window.addEventListener('load', () => {
       setTimeout(() => {
-        this.html.classList.add('loaded');
+	      BaseHelpers.html.classList.add('loaded');
       }, 0);
     });
   }
@@ -62,11 +62,11 @@ class BaseHelpers {
   /** Функция для фиксированной шапки при скролле */
   static headerFixed() {
     const headerStickyObserver = new IntersectionObserver(([entry]) => {
-      this.html.classList.toggle('header-is-sticky', !entry.isIntersecting);
+	    BaseHelpers.html.classList.toggle('header-is-sticky', !entry.isIntersecting);
     });
 
-    if (this.firstScreen) {
-      headerStickyObserver.observe(this.firstScreen);
+    if (BaseHelpers.firstScreen) {
+      headerStickyObserver.observe(BaseHelpers.firstScreen);
     }
   }
 }

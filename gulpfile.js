@@ -1,4 +1,5 @@
 import gulp from 'gulp';
+import browserSync from 'browser-sync';
 import { filePaths } from './gulp/config/paths.js';
 
 /**
@@ -10,7 +11,7 @@ import { reset } from './gulp/tasks/reset.js';
 import { html } from './gulp/tasks/html.js';
 import { server } from './gulp/tasks/server.js';
 import { scss } from './gulp/tasks/scss.js';
-import { javaScript } from './gulp/tasks/java-script.js';
+import { javascript } from './gulp/tasks/javascript.js';
 import { images } from './gulp/tasks/images.js';
 import { otfToTtf, ttfToWoff, fontStyle } from './gulp/tasks/fonts.js';
 import { createSvgSprite } from './gulp/tasks/create-svg-sprite.js';
@@ -18,10 +19,13 @@ import { zip } from './gulp/tasks/zip.js';
 import { ftpDeploy } from './gulp/tasks/ftp-deploy.js';
 
 const isBuild = process.argv.includes('--build');
-const handleHTML = html.bind(null, isBuild);
-const handleSCSS = scss.bind(null, isBuild);
-const handleJS = javaScript.bind(null, !isBuild);
-const handleImages = images.bind(null, isBuild);
+const browserSyncInstance = browserSync.create();
+
+const handleServer = server.bind(null, browserSyncInstance);
+const handleHTML = html.bind(null, isBuild, browserSyncInstance);
+const handleSCSS = scss.bind(null, isBuild, browserSyncInstance);
+const handleJS = javascript.bind(null, !isBuild, browserSyncInstance);
+const handleImages = images.bind(null, isBuild, browserSyncInstance);
 
 /**
  * Наблюдатель за изменениями в файлах
@@ -52,7 +56,7 @@ const mainTasks = gulp.series(fonts, devTasks);
 /**
  * Построение сценариев выполнения задач
  * */
-const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
+const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, handleServer));
 const build = gulp.series(reset, mainTasks);
 const deployZIP = gulp.series(reset, mainTasks, zip);
 const deployFTP = gulp.series(reset, mainTasks, ftpDeploy);

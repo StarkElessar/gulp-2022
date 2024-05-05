@@ -6,7 +6,7 @@ import { plugins } from '../config/plugins.js';
 import { filePaths } from '../config/paths.js';
 import { logger } from "../config/logger.js";
 
-const images = (isBuild) => {
+const images = (isBuild, serverInstance) => {
   return gulp.src(filePaths.src.images)
     .pipe(logger.handleError('IMAGES'))
     .pipe(plugins.newer(filePaths.build.images))
@@ -28,7 +28,7 @@ const images = (isBuild) => {
     .pipe(gulp.dest(filePaths.build.images))
     .pipe(gulp.src(filePaths.src.svg))
     .pipe(gulp.dest(filePaths.build.images))
-    .pipe(plugins.browserSync.stream());
+    .pipe(serverInstance.stream());
 };
 
 export { images };

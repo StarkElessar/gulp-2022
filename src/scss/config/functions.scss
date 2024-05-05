@@ -1,7 +1,16 @@
+@use "sass:math";
+
+@function round-to-decimal($number, $decimal: 2) {
+	$multiplier: pow(10, $decimal);
+
+	@return math.div(round($number * $multiplier), $multiplier);
+}
+
 // !TO PERCENT %:
-@function prc($pxOne, $pxTwo) {
-  $result: math.div($pxOne, $pxTwo) * 100%;
-  @return $result;
+@function prc($px-one, $px-two) {
+	$result: math.div($px-one, $px-two) * 100%;
+
+	@return round-to-decimal($result);
 }
 
 // !TO REM:

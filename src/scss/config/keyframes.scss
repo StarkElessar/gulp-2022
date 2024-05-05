@@ -1,29 +1,31 @@
 @keyframes show-header {
 	0% {
-		top: -100%;
+		inset-block-start: -100%;
 	}
 
 	100% {
-		top: 0;
+		inset-block-start: 0;
 	}
 }
 
 @keyframes fade-up-big {
 	0% {
-		transform: translateY(1rem);
 		opacity: 0;
+		transform: translateY(1rem);
 	}
+
 	100% {
-		transform: translateY(0);
 		opacity: 1;
+		transform: translateY(0);
 	}
 }
 
 @keyframes rotation {
-	from {
+	0% {
 		transform: rotate(0);
 	}
-	to {
+
+	100% {
 		transform: rotate(359deg);
 	}
 }

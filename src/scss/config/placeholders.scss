@@ -5,18 +5,18 @@
 
 // Счетчик для списка
 %list-counter {
-	list-style-type: none;
 	counter-reset: item;
+	list-style-type: none;
 
 	li {
 		position: relative;
 
-		&:before {
-			counter-increment: item;
+		&::before {
 			content: counter(item);
+			counter-increment: item;
 			position: absolute;
-			left: 0;
-			top: 0;
+			inset-block-start: 0;
+			inset-inline-start: 0;
 		}
 	}
 }
@@ -24,19 +24,19 @@
 // Адаптивное видео
 %responsive-video {
 	position: relative;
+	block-size: 0;
+	padding-block-end: 56.25%;
 	overflow: hidden;
-	height: 0;
-	padding-bottom: 56.25%;
 
 	video,
 	iframe,
 	object,
 	embed {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 100%;
+		block-size: 100%;
 	}
 }
 
@@ -47,22 +47,22 @@
 	object,
 	embed {
 		position: fixed;
-		top: 50%;
-		left: 50%;
-		min-width: 100%;
-		min-height: 100%;
-		width: auto;
-		height: auto;
+		inset-block-start: 50%;
+		inset-inline-start: 50%;
 		z-index: -100;
-		transform: translateX(-50%) translateY(-50%);
+		block-size: auto;
+		min-block-size: 100%;
+		inline-size: auto;
+		min-inline-size: 100%;
 		background-size: cover;
+		transform: translateX(-50%) translateY(-50%);
 	}
 }
 
 // Серый фильтр
 %gray-filter {
-	transition: all 0.3s ease 0s;
 	filter: grayscale(1);
+	transition: all 0.3s ease 0s;
 
 	@media (any-hover: hover) {
 		&:hover {

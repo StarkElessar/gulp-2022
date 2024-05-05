@@ -3,7 +3,7 @@
 @function round-to-decimal($number, $decimal: 2) {
 	$multiplier: pow(10, $decimal);
 
-	@return math.div(round($number * $multiplier), $multiplier);
+	@return math.div(math.round($number * $multiplier), $multiplier);
 }
 
 // !TO PERCENT %:
@@ -16,11 +16,13 @@
 // !TO REM:
 @function rem($px) {
 	$result: math.div($px, 16) + rem;
+
 	@return $result;
 }
 
 // !TO EM:
 @function em($px) {
 	$result: math.div($px, 16) + em;
+
 	@return $result;
 }

@@ -2,9 +2,9 @@
 @import "../config/mixins";
 
 .header {
-	width: 100%;
-	transition: background-color var(--bs-transition);
 	z-index: 50;
+	inline-size: 100%;
+	transition: background-color var(--bs-transition);
 
 	.header-is-sticky & {
 		// ..стили для липкого хедера
@@ -14,17 +14,18 @@
 
 	// .header__container
 	&__container {
-		height: rem($header-height);
 		display: flex;
+		block-size: rem($header-height);
 		align-items: center;
 
 		.header-is-sticky & {
-			height: rem($header-height - 50);
+			block-size: rem($header-height - 50);
 		}
 	}
 }
 
 // Burger
+
 /*
 .icon-menu {
   display: none;

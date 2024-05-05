@@ -2,14 +2,14 @@
 
 .tabs {
 	display: flex;
-	flex-direction: column;
 	gap: rem(10);
+	flex-direction: column;
 
 	// .tabs__nav
 	&__nav {
 		display: flex;
-		align-items: center;
 		gap: rem(10);
+		align-items: center;
 	}
 
 	// .tabs__trigger
@@ -18,19 +18,15 @@
 		transition: 0.2s ease-in-out;
 
 		&.active {
-			background-color: #ff4040;
 			color: #fff;
+			background-color: #ff4040;
 		}
-	}
-
-	// .tabs__content
-	&__content {
 	}
 
 	// .tabs__panel
 	&__panel {
-		animation: fade-up-big 0.4s forwards;
 		display: none;
+		animation: fade-up-big 0.4s forwards;
 
 		&.active {
 			display: block;

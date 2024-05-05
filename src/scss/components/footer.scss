@@ -1,5 +1,8 @@
+@import "../config/functions";
+@import "../config/mixins";
+
 .footer {
-  padding: rem(20) 0;
+  padding-block: rem(20);
   background: var(--black-color);
 
   // .footer__container

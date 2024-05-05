@@ -23,97 +23,95 @@
  * 	left: -15%;
  * }
  * */
-class MousePRLX {
-  constructor(props) {
-    const defaultConfig = {
-      init: true,
-    };
+export class MousePRLX {
+	constructor(props) {
+		const defaultConfig = {
+			init: true,
+		};
 
-    this.config = Object.assign(defaultConfig, props);
+		this.config = Object.assign(defaultConfig, props);
 
-    if (this.config.init) {
-      const paralaxElements = document.querySelectorAll('[data-prlx-mouse]');
+		if (this.config.init) {
+			const parallaxElements = document.querySelectorAll('[data-prlx-mouse]');
 
-      if (paralaxElements.length) {
-        this.init(paralaxElements);
-      }
-    }
-  }
+			if (parallaxElements.length) {
+				this.init(parallaxElements);
+			}
+		}
+	}
 
-  init(paralaxElements) {
-    paralaxElements.forEach((element) => {
-      const paralaxMouseWrapper = element.closest('[data-prlx-mouse-wrapper]');
+	init(parallaxElements) {
+		parallaxElements.forEach((element) => {
+			const parallaxMouseWrapper = element.closest('[data-prlx-mouse-wrapper]');
 
-      /** Коэффициент X */
-      const paramCoefficientX = element.dataset.prlxCx
-        ? Number(element.dataset.prlxCx)
-        : 100;
+			/** Коэффициент X */
+			const paramCoefficientX = element.dataset.prlxCx
+			                          ? Number(element.dataset.prlxCx)
+			                          : 100;
 
-      /** Коэффициент. У */
-      const paramCoefficientY = element.dataset.prlxCy
-        ? Number(element.dataset.prlxCy)
-        : 100;
+			/** Коэффициент. У */
+			const paramCoefficientY = element.dataset.prlxCy
+			                          ? Number(element.dataset.prlxCy)
+			                          : 100;
 
-      /** Направление Х и Y */
-      const directionX = element.hasAttribute('data-prlx-dxr') ? -1 : 1;
-      const directionY = element.hasAttribute('data-prlx-dyr') ? -1 : 1;
+			/** Направление Х и Y */
+			const directionX = element.hasAttribute('data-prlx-dxr') ? -1 : 1;
+			const directionY = element.hasAttribute('data-prlx-dyr') ? -1 : 1;
 
-      /** Скорость анимации */
-      const paramAnimation = element.dataset.prlxA
-        ? Number(element.dataset.prlxA)
-        : 50;
+			/** Скорость анимации */
+			const paramAnimation = element.dataset.prlxA
+			                       ? Number(element.dataset.prlxA)
+			                       : 50;
 
-      let positionX = 0;
-      let positionY = 0;
-      let coordXPercent = 0;
-      let coordYPercent = 0;
+			let positionX = 0;
+			let positionY = 0;
+			let coordXPercent = 0;
+			let coordYPercent = 0;
 
-      setMouseParallaxStyle();
+			setMouseParallaxStyle();
 
-      /** Проверка на наличие родителя, в котором будет считываться положение мыши */
-      if (paralaxMouseWrapper) {
-        mouseMoveParallax(paralaxMouseWrapper);
-      } else {
-        mouseMoveParallax();
-      }
+			/** Проверка на наличие родителя, в котором будет считываться положение мыши */
+			if (parallaxMouseWrapper) {
+				mouseMoveParallax(parallaxMouseWrapper);
+			} else {
+				mouseMoveParallax();
+			}
 
-      function setMouseParallaxStyle() {
-        positionX += ((coordXPercent - positionX) * paramAnimation) / 1000;
-        positionY += ((coordYPercent - positionY) * paramAnimation) / 1000;
+			function setMouseParallaxStyle() {
+				positionX += ((coordXPercent - positionX) * paramAnimation) / 1000;
+				positionY += ((coordYPercent - positionY) * paramAnimation) / 1000;
 
-        const transformX = (directionX * positionX) / (paramCoefficientX / 10);
-        const transformY = (directionY * positionY) / (paramCoefficientY / 10);
+				const transformX = (directionX * positionX) / (paramCoefficientX / 10);
+				const transformY = (directionY * positionY) / (paramCoefficientY / 10);
 
-        element.style.transform = `translate3D(${transformX}%, ${transformY}%, 0)`;
+				element.style.transform = `translate3D(${transformX}%, ${transformY}%, 0)`;
 
-        requestAnimationFrame(setMouseParallaxStyle);
-      }
+				requestAnimationFrame(setMouseParallaxStyle);
+			}
 
-      function mouseMoveParallax(wrapper = window) {
-        wrapper.addEventListener('mousemove', ({ clientX, clientY }) => {
-          const offsetTop =
-            element.getBoundingClientRect().top + window.scrollY;
+			function mouseMoveParallax(wrapper = window) {
+				wrapper.addEventListener('mousemove', ({ clientX, clientY }) => {
+					const offsetTop =
+						element.getBoundingClientRect().top + window.scrollY;
 
-          if (
-            offsetTop >= window.scrollY ||
-            offsetTop + element.offsetHeight >= window.scrollY
-          ) {
-            /** Получение ширины и высоты блока */
-            const parallaxWidth = window.innerWidth;
-            const parallaxHeight = window.innerHeight;
+					if (
+						offsetTop >= window.scrollY ||
+						offsetTop + element.offsetHeight >= window.scrollY
+					) {
+						/** Получение ширины и высоты блока */
+						const parallaxWidth = window.innerWidth;
+						const parallaxHeight = window.innerHeight;
 
-            /** Ноль посередине */
-            const coordX = clientX - parallaxWidth / 2;
-            const coordY = clientY - parallaxHeight / 2;
+						/** Ноль посередине */
+						const cordX = clientX - parallaxWidth / 2;
+						const cordY = clientY - parallaxHeight / 2;
 
-            /** Получение значений координат в процентах */
-            coordXPercent = (coordX / parallaxWidth) * 100;
-            coordYPercent = (coordY / parallaxHeight) * 100;
-          }
-        });
-      }
-    });
-  }
+						/** Получение значений координат в процентах */
+						coordXPercent = (cordX / parallaxWidth) * 100;
+						coordYPercent = (cordY / parallaxHeight) * 100;
+					}
+				});
+			}
+		});
+	}
 }
-
-export default MousePRLX;

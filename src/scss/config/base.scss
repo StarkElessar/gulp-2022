@@ -1,3 +1,6 @@
+@import "functions";
+@import "mixins";
+
 /** Базовые анимации: */
 @import 'keyframes';
 
@@ -10,56 +13,56 @@
 * Например header__container, main__container и т.д.
 */
 [class*='__container'] {
-  max-width: rem($maxWidthContainer);
-  margin: 0 auto;
-  padding: 0 rem($mainOffset);
+	max-width: rem($max-width-container);
+	margin-inline: auto;
+	padding-inline: rem($main-offset);
 }
 
 // Стили отзывчивых картинок (IBG) ============================================
-[class*='-ibg'] {
-  position: relative;
+.ibg {
+	position: relative;
 
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-  }
-}
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
 
-[class*='-ibg_contain'] {
-  img {
-    object-fit: contain;
-  }
+	&_contain {
+		img {
+			object-fit: contain;
+		}
+	}
 }
 
 // Оболочка ===================================================================
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 
-  /** Поменять на clip - если используется в проекте position: sticky */
-  overflow: hidden;
+	/** Поменять на clip - если используется в проекте position: sticky */
+	overflow: hidden;
 }
 
 .page {
-  position: relative;
-  flex: 1 1 auto;
+	position: relative;
+	flex: 1 1 auto;
 
-  [data-observ] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: rem(2);
-    background: transparent;
-    pointer-events: none;
-  }
+	[data-observ] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: rem(2);
+		background: transparent;
+		pointer-events: none;
+	}
 
-  &_start {
-    padding-top: rem($headerHeight);
-  }
+	&_start {
+		padding-top: rem($header-height);
+	}
 }

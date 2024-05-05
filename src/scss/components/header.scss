@@ -1,24 +1,27 @@
+@import "../config/functions";
+@import "../config/mixins";
+
 .header {
-  width: 100%;
-  transition: background-color var(--bs-transition);
-  z-index: 50;
+	width: 100%;
+	transition: background-color var(--bs-transition);
+	z-index: 50;
 
-  .header-is-sticky & {
-    // ..стили для липкого хедера
-    position: fixed;
-    background-color: #007aff;
-  }
+	.header-is-sticky & {
+		// ..стили для липкого хедера
+		position: fixed;
+		background-color: #007aff;
+	}
 
-  // .header__container
-  &__container {
-    height: rem($headerHeight);
-    display: flex;
-    align-items: center;
+	// .header__container
+	&__container {
+		height: rem($header-height);
+		display: flex;
+		align-items: center;
 
-    .header-is-sticky & {
-      height: rem($headerHeight - 50);
-    }
-  }
+		.header-is-sticky & {
+			height: rem($header-height - 50);
+		}
+	}
 }
 
 // Burger

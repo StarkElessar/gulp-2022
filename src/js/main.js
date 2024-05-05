@@ -6,17 +6,19 @@
 
  * Если мы хотим добавить модуль следует его раскомментировать
  */
-// import MousePRLX from './libs/parallaxMouse'
+// import { MousePRLX } from './libs/parallaxMouse'
 // import AOS from 'aos'
 // import Swiper, { Navigation, Pagination } from 'swiper';
 
-import BaseHelpers from './helpers/base-helpers';
-import PopupManager from './modules/popup-manager';
-import BurgerMenu from './modules/burger-menu';
-import Tabs from './modules/tabs';
-import Accordion from './modules/accordion';
+import { BaseHelpers } from './helpers/base-helpers';
+import { PopupManager } from './modules/popup-manager';
+import { BurgerMenu } from './modules/burger-menu';
+import { Tabs } from './modules/tabs';
+import { Accordion } from './modules/accordion';
 
 BaseHelpers.checkWebpSupport();
+
+BaseHelpers.calcScrollbarWidth();
 
 BaseHelpers.addTouchClass();
 

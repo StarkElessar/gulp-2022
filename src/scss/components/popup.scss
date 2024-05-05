@@ -46,7 +46,9 @@
 		background-color: $white-100;
 		transform: translateY(rem(-200));
 		opacity: 0;
-		transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+		transition:
+			transform 0.2s ease-in-out,
+			opacity 0.2s ease-in-out;
 	}
 
 	// .popup__close

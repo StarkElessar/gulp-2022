@@ -3,14 +3,7 @@
 @import "functions";
 
 // !Адаптивное свойство (clamp)
-@mixin adaptiveClamp(
-	$property,
-	$start-size,
-	$min-size,
-	$width-from: $container-width,
-	$width-to: $min-width,
-	$keep-size: 0
-) {
+@mixin adaptiveClamp($property, $start-size, $min-size, $width-from: $container-width, $width-to: $min-width, $keep-size: 0) {
 	// Для calc();
 	$addSize: math.div($start-size - $min-size, 16);
 
@@ -32,23 +25,16 @@
 	// Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 	$slope: math.div(($start-size - $min-size), ($width-from - $width-to));
 	$yIntersection: -$width-to * $slope + $min-size;
-	$flyValue: #{rem($yIntersection)}' + ' #{$slope * 100}vw;
+	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
 
 	// Получение значения свойства
-	$propertyValue: #{'clamp(' rem($min-size) ',' $flyValue ',' rem($start-size) ')'};
+	$propertyValue: #{"clamp(" rem($min-size) "," $flyValue "," rem($start-size) ")"};
 	// Если отрицательные значения
 	@if ($min-size > $start-size) {
-		$propertyValue: #{'clamp('rem($start-size)','$flyValue','rem($min-size)')'};
+		$propertyValue: #{"clamp(" rem($start-size) "," $flyValue "," rem($min-size) ")"};
 	}
 
-	@if $width-from ==
-    $container-width or
-    $width-from ==
-    $max-width or
-    $keep-size ==
-    1 or
-    $keep-size ==
-    2 {
+	@if $width-from == $container-width or $width-from == $max-width or $keep-size == 1 or $keep-size == 2 {
 		@media (min-width: $widthFromMedia) {
 			#{$property}: rem($start-size);
 		}
@@ -60,7 +46,9 @@
 		}
 		// Если не поддерживается clamp();
 		@supports not (#{$property}: $propertyValue) {
-			#{$property}: calc(#{rem($min-size)} + #{$addSize} * (100vw - #{rem($width-to)}) / #{math.div($width-from, 16) - math.div($width-to, 16)});
+			#{$property}: calc(
+				#{rem($min-size)} + #{$addSize} * (100vw - #{rem($width-to)}) / #{math.div($width-from, 16) - math.div($width-to, 16)}
+			);
 		}
 	}
 	@if $width-to == $min-width or $keep-size == 1 or $keep-size == 3 {
@@ -159,7 +147,7 @@
 // !after-before
 @mixin pseudo-cell($type, $pos: absolute) {
 	&::#{$type} {
-		content: '';
+		content: "";
 		position: $pos;
 		@content;
 	}

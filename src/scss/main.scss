@@ -1,23 +1,23 @@
-@use 'sass:math';
+@use "sass:math";
 
 /**
 * Подключение шрифтов локально из папки "./src/fonts"
 */
-@import 'config/fonts';
+@import "config/fonts";
 
 /** Подключение переменных */
 @import "config/root";
-@import 'config/vars';
+@import "config/vars";
 
 /**
 * Подключение sass function и mixins и extends стилей
 */
-@import 'config/functions';
-@import 'config/mixins';
-@import 'config/placeholders';
+@import "config/functions";
+@import "config/mixins";
+@import "config/placeholders";
 
 /** Обнуление */
-@import 'config/reset';
+@import "config/reset";
 
 /**
 * Библиотеки
@@ -29,24 +29,24 @@
 /**
 * Подключение custom scrollbar для всего сайта
 */
-@import 'config/scrollbar';
+@import "config/scrollbar";
 
 /**
 * Общие параметры, шаблоны(заготовки) и вспомогательные классы
 */
-@import 'config/base';
+@import "config/base";
 
 /**
 * БЕМ блоки используемые во всё проекте
 */
-@import 'config/common';
+@import "config/common";
 
 /**
 * Подключение стилей отдельных блоков и секций
 */
-@import 'components/header';
-@import 'components/popup';
-@import 'components/checkbox';
-@import 'components/tabs';
-@import 'components/accordion';
-@import 'components/footer';
+@import "components/header";
+@import "components/popup";
+@import "components/checkbox";
+@import "components/tabs";
+@import "components/accordion";
+@import "components/footer";

@@ -1,13 +1,13 @@
 @import "mixins";
 
 [data-fullscreen] {
-  min-height: 100vh;
+	min-height: 100vh;
 
-  .touch & {
-    min-height: calc(var(--vh, 1vh) * 100);
+	.touch & {
+		min-height: calc(var(--vh, 1vh) * 100);
 
-    @include media-mx(768) {
-      transition: height 0.2s ease-in-out;
-    }
-  }
+		@include media-mx(768) {
+			transition: height 0.2s ease-in-out;
+		}
+	}
 }

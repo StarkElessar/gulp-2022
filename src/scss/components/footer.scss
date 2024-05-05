@@ -2,17 +2,17 @@
 @import "../config/mixins";
 
 .footer {
-  padding-block: rem(20);
-  background: var(--black-color);
+	padding-block: rem(20);
+	background: var(--black-color);
 
-  // .footer__container
-  &__container {
-    display: flex;
-    align-items: center;
+	// .footer__container
+	&__container {
+		display: flex;
+		align-items: center;
 
-    @include media-mx(510) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
+		@include media-mx(510) {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
 }

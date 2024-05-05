@@ -2,7 +2,7 @@
 @import "mixins";
 
 /** Базовые анимации: */
-@import 'keyframes';
+@import "keyframes";
 
 /** Стили для полноэкранного блока: */
 // @import "fullscreen";
@@ -12,7 +12,7 @@
 * всем классам содержащим *__container
 * Например header__container, main__container и т.д.
 */
-[class*='__container'] {
+[class*="__container"] {
 	max-width: rem($max-width-container);
 	margin-inline: auto;
 	padding-inline: rem($main-offset);

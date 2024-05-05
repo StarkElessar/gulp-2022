@@ -35,7 +35,7 @@ const fontFaceTemplate = (name, file, weight, style) => `@font-face {
 	src: url("../fonts/${file}.woff2") format("woff2");
 	font-weight: ${weight};
 	font-style: ${style};
-}\n`;
+}\n\n`;
 
 const otfToTtf = (done) => {
 	if (fs.existsSync(fontFacesFile)) return done();

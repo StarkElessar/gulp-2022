@@ -8,6 +8,7 @@
 		"dev": "gulp",
 		"build": "gulp build --build",
 		"preview": "npm run build && npx serve ./dist",
+		"lint:scss": "stylelint src/scss/**/*.scss --fix",
 		"zip": "gulp deployZIP --build",
 		"deployFTP": "gulp deployFTP --build",
 		"sprite": "gulp createSvgSprite",
@@ -34,6 +35,7 @@
 	},
 	"homepage": "https://github.com/StarkElessar/gulp-2022#readme",
 	"devDependencies": {
+		"@archoleat/stylelint-config-extended-scss": "^1.6.9",
 		"autoprefixer": "^10.4.14",
 		"browser-sync": "^2.27.7",
 		"chalk": "^5.2.0",

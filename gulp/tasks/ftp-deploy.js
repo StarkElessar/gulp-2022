@@ -4,15 +4,13 @@ import util from 'gulp-util';
 
 import { configFTP } from '../config/ftp.js';
 import { filePaths } from '../config/paths.js';
-import { logger } from "../config/logger.js";
+import { logger } from '../config/logger.js';
 
-const ftpDeploy = () => {
-  configFTP.log = util.log;
-  const ftpConnect = ftp.create(configFTP);
+export const ftpDeploy = () => {
+	configFTP.log = util.log;
+	const ftpConnect = ftp.create(configFTP);
 
-  return gulp.src(`${filePaths.buildFolder}/**/*.*`, {})
-    .pipe(logger.handleError('FTP_DEPLOY'))
-    .pipe(ftpConnect.dest(`/${filePaths.ftp}/${filePaths.projectDirName}`));
+	return gulp.src(`${filePaths.buildFolder}/**/*.*`, {})
+		.pipe(logger.handleError('FTP_DEPLOY'))
+		.pipe(ftpConnect.dest(`/${filePaths.ftp}/${filePaths.projectDirName}`));
 };
-
-export { ftpDeploy };

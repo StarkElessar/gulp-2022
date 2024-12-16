@@ -1,5 +1,7 @@
-import plumber from 'gulp-plumber'; // Обработка ошибок
-import notify from 'gulp-notify'; // Сообщения (подсказки)
+// Обработка ошибок
+import plumber from 'gulp-plumber';
+// Сообщения (подсказки)
+import notify from 'gulp-notify';
 import chalk from 'chalk';
 
 class Logger {
@@ -13,7 +15,7 @@ class Logger {
 	};
 
 	warning(message) {
-		console.log(chalk.bold.white.bgGreenBright(message));
+		console.log(chalk.bold.white.bgGreen(message));
 	}
 
 	error(message, errors = []) {

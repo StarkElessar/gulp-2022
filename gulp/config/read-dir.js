@@ -1,10 +1,10 @@
-import { promises } from "fs";
-import { extname } from "path";
+import { readdir } from 'node:fs/promises';
+import { extname } from 'node:path';
 
 export const readDir = async (directoryPath) => {
 	const result = {};
 	try {
-		const files = await promises.readdir(directoryPath);
+		const files = await readdir(directoryPath);
 		// Фильтрация файлов с расширением .js
 		const jsFiles = files.filter(file => extname(file) === '.js');
 		// Вывод найденных .js файлов
@@ -16,7 +16,8 @@ export const readDir = async (directoryPath) => {
 		});
 
 		return result;
-	} catch (err) {
+	}
+	catch (err) {
 		console.error('Ошибка чтения директории:', err);
 	}
 };

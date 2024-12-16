@@ -1,5 +1,5 @@
-@import "functions";
-@import "mixins";
+@use "functions" as *;
+@use "mixins" as *;
 
 * {
 	&::-webkit-scrollbar {

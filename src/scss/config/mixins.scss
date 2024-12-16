@@ -1,9 +1,16 @@
-@use "sass:math";
-@import "vars";
-@import "functions";
+@use "sass:math" as math;
+@use "vars" as global;
+@use "functions" as *;
 
-// !Адаптивное свойство (clamp)
-@mixin adaptive-clamp($property, $start-size, $min-size, $width-from: $container-width, $width-to: $min-width, $keep-size: 0) {
+// Адаптивное свойство (clamp)
+@mixin adaptive-clamp(
+	$property,
+	$start-size,
+	$min-size,
+	$width-from: global.$container-width,
+	$width-to: global.$min-width,
+	$keep-size: 0
+) {
 	// Для calc();
 	$add-size: math.div($start-size - $min-size, 16);
 
@@ -20,8 +27,8 @@
 	// Получение значения свойства
 	$property-value: #{"clamp(" rem($min-size) "," $fly-value "," rem($start-size) ")"};
 
-	@if $width-from == $container-width and $max-width-container == 0 {
-		$width-from: $max-width;
+	@if $width-from == global.$container-width and global.$max-width-container == 0 {
+		$width-from: global.$max-width;
 	}
 
 	@if $min-size <= 0 {
@@ -37,7 +44,7 @@
 		$property-value: #{"clamp(" rem($start-size) "," $fly-value "," rem($min-size) ")"};
 	}
 
-	@if $width-from == $container-width or $width-from == $max-width or $keep-size == 1 or $keep-size == 2 {
+	@if $width-from == global.$container-width or $width-from == global.$max-width or $keep-size == 1 or $keep-size == 2 {
 		@media (min-width: $width-from-media) {
 			#{$property}: rem($start-size);
 		}
@@ -57,14 +64,14 @@
 		}
 	}
 
-	@if $width-to == $min-width or $keep-size == 1 or $keep-size == 3 {
+	@if $width-to == global.$min-width or $keep-size == 1 or $keep-size == 3 {
 		@media (max-width: $width-to-media) {
 			#{$property}: rem($min-size);
 		}
 	}
 }
 
-// !gradient for text
+// gradient for text
 @mixin text-gradient($gradient) {
 	background: $gradient;
 	background-clip: text;
@@ -95,21 +102,21 @@
 	}
 }
 
-// !:not (last-child)
+// :not (last-child)
 @mixin not-last() {
 	&:not(:last-child) {
 		@content;
 	}
 }
 
-// !:not (first-child)
+// :not (first-child)
 @mixin not-first() {
 	&:not(:first-child) {
 		@content;
 	}
 }
 
-// !обрезает текст до определенного кол-ва строк, остаток заменяет на 3 точки (...)
+// обрезает текст до определенного кол-ва строк, остаток заменяет на 3 точки (...)
 @mixin line-clamp($value) {
 	display: -webkit-box;
 	overflow: hidden;
@@ -117,7 +124,7 @@
 	-webkit-line-clamp: $value;
 }
 
-// !styled placeholder for TextArea
+// styled placeholder for TextArea
 @mixin styled-placeholder($color: inherit, $fontSize: inherit, $lineHeight: normal) {
 	&::placeholder {
 		line-height: $lineHeight;
@@ -126,7 +133,7 @@
 	}
 }
 
-// !плавное убирание placeholder
+// плавное убирание placeholder
 @mixin hide-placeholder($time: 300, $effect: ease) {
 	&::placeholder {
 		transition: opacity #{$time} + ms $effect;
@@ -139,7 +146,7 @@
 	}
 }
 
-// !after-before
+// after-before
 @mixin pseudo-cell($type, $pos: absolute) {
 	&::#{$type} {
 		content: "";

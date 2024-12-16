@@ -1,4 +1,4 @@
-@import "mixins";
+@use "mixins" as *;
 
 [data-fullscreen] {
 	min-block-size: 100vb;

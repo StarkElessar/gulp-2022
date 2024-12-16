@@ -1,5 +1,5 @@
-@import "../config/functions";
-@import "../config/mixins";
+@use "../config/functions" as *;
+@use "../config/mixins" as *;
 
 .accordion {
 	/** Установить свои значения */
@@ -88,6 +88,6 @@
 		/** Установить свои значения */
 		padding: 0 rem(8);
 		overflow: hidden;
-		transition: all 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
 	}
 }

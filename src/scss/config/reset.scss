@@ -1,4 +1,6 @@
-@import "mixins";
+@use "functions" as *;
+@use "mixins" as *;
+@use "vars" as global;
 
 * {
 	margin: 0;
@@ -52,17 +54,17 @@ html,
 body {
 	inline-size: 100%;
 	block-size: 100%;
-	min-inline-size: $min-width + px;
+	min-inline-size: global.$min-width + px;
 }
 
 body {
 	overscroll-behavior: none;
-	line-height: var(--bs-line-height);
-	text-rendering: optimizelegibility;
+	line-height: 1;
+	text-rendering: optimizeLegibility;
 	text-size-adjust: 100%;
-	font-family: var(--bs-font-family);
-	font-size: var(--bs-font-size);
-	font-weight: var(--bs-font-weight);
+	font-family: var(--bs-font-family), sans-serif;
+	font-size: 16px;
+	font-weight: 400;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
@@ -87,6 +89,7 @@ input[type="number"] {
 }
 
 button {
+	color: inherit;
 	cursor: pointer;
 	user-select: none;
 	background-color: transparent;
@@ -115,8 +118,7 @@ a {
 	}
 }
 
-ul,
-li {
+ul, ol {
 	list-style: none;
 }
 

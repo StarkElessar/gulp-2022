@@ -70,7 +70,7 @@
 		"postcss-preset-env": "^8.5.0",
 		"postcss-sort-media-queries": "^5.2.0",
 		"prettier": "2.8.8",
-		"sass": "*1.62.1",
+		"sass": "^1.83.0",
 		"serve": "^14.2.3",
 		"vinyl-ftp": "^0.6.1",
 		"webp-converter": "*2.2.3",

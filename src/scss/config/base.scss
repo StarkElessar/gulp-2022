@@ -1,11 +1,12 @@
-@import "functions";
-@import "mixins";
+@use "functions" as *;
+@use "mixins" as *;
+@use "vars" as global;
 
-/** Базовые анимации: */
-@import "keyframes";
+// Базовые анимации:
+@use "keyframes";
 
-/** Стили для полноэкранного блока: */
-// @import "fullscreen";
+// Стили для полноэкранного блока:
+// @use "fullscreen";
 
 /*
 * (i) Стили будут применяться ко
@@ -14,11 +15,11 @@
 */
 [class*="__container"] {
 	margin-inline: auto;
-	max-inline-size: rem($max-width-container);
-	padding-inline: rem($main-offset);
+	max-inline-size: rem(global.$max-width-container);
+	padding-inline: rem(global.$main-offset);
 }
 
-// Стили отзывчивых картинок (IBG) ============================================
+// Стили отзывчивых картинок (IBG)
 .ibg {
 	position: relative;
 
@@ -38,12 +39,12 @@
 	}
 }
 
-// Оболочка ===================================================================
+// Оболочка
 .wrapper {
 	display: flex;
 	min-block-size: 100%;
 
-	/** Поменять на clip - если используется в проекте position: sticky */
+	// Поменять на clip - если используется в проекте position: sticky
 	overflow: hidden;
 	flex-direction: column;
 }
@@ -63,6 +64,6 @@
 	}
 
 	&_start {
-		padding-block-start: rem($header-height);
+		padding-block-start: rem(global.$header-height);
 	}
 }

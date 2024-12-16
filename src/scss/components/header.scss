@@ -1,5 +1,6 @@
-@import "../config/functions";
-@import "../config/mixins";
+@use "../config/functions" as *;
+@use "../config/mixins" as *;
+@use "../config/vars" as global;
 
 .header {
 	z-index: 50;
@@ -15,17 +16,16 @@
 	// .header__container
 	&__container {
 		display: flex;
-		block-size: rem($header-height);
+		block-size: rem(global.$header-height);
 		align-items: center;
 
 		.header-is-sticky & {
-			block-size: rem($header-height - 50);
+			block-size: rem(global.$header-height - 50);
 		}
 	}
 }
 
 // Burger
-
 /*
 .icon-menu {
   display: none;

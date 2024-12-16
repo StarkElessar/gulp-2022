@@ -1,52 +1,29 @@
-@use "sass:math";
+// Подключение шрифтов локально из папки "./src/fonts"
+@use "config/fonts";
 
-/**
-* Подключение шрифтов локально из папки "./src/fonts"
-*/
-@import "config/fonts";
-
-/** Подключение переменных */
-@import "config/root";
-@import "config/vars";
-
-/**
-* Подключение sass function и mixins и extends стилей
-*/
-@import "config/functions";
-@import "config/mixins";
-@import "config/placeholders";
+// Подключение переменных
+@use "config/root";
 
 /** Обнуление */
-@import "config/reset";
+@use "config/reset";
 
-/**
-* Библиотеки
-* раскомментировать для использования
-*/
-// @import 'libs/aos';
-// @import 'libs/swiper';
+// Библиотеки, раскомментировать для использования
+// @use 'libs/aos';
+// @use 'libs/swiper';
 
-/**
-* Подключение custom scrollbar для всего сайта
-*/
-@import "config/scrollbar";
+// Подключение custom scrollbar для всего сайта
+@use "config/scrollbar";
 
-/**
-* Общие параметры, шаблоны(заготовки) и вспомогательные классы
-*/
-@import "config/base";
+// Общие параметры, шаблоны(заготовки) и вспомогательные классы
+@use "config/base";
 
-/**
-* БЕМ блоки используемые во всё проекте
-*/
-@import "config/common";
+// БЕМ блоки используемые во всё проекте
+@use "config/common";
 
-/**
-* Подключение стилей отдельных блоков и секций
-*/
-@import "components/header";
-@import "components/popup";
-@import "components/checkbox";
-@import "components/tabs";
-@import "components/accordion";
-@import "components/footer";
+// Подключение стилей отдельных блоков и секций
+@use "components/header";
+@use "components/popup";
+@use "components/checkbox";
+@use "components/tabs";
+@use "components/accordion";
+@use "components/footer";

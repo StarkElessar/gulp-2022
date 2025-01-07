@@ -1,3 +1,6 @@
+/**
+ * Модуль для создания случайного строкового id
+ * */
 const idPrefix = [1e7] + -1e3 + -4e3 + -8e3 + -1e11;
 
 const generateRandomByte = () => {
@@ -13,4 +16,4 @@ const generateByteValue = (match) => {
   return byteValue.toString(16);
 };
 
-export const uuIdV4 = () => idPrefix.replace(/[018]/g, generateByteValue);
+export const randomId = () => idPrefix.replace(/[018]/g, generateByteValue);

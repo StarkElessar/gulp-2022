@@ -28,13 +28,7 @@ aside {
 }
 
 html {
-	opacity: 0;
 	scroll-behavior: smooth;
-	transition: opacity 0.8s ease-in-out;
-
-	&.loaded {
-		opacity: 1;
-	}
 
 	&.lock {
 		touch-action: none;
